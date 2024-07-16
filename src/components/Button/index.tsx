@@ -19,7 +19,7 @@ export type ButtonVariant =
 
 export interface ButtonProps
   extends Omit<HTMLProps<HTMLButtonElement>, "className" | "size" | "type"> {
-  className: ClassValue;
+  className?: ClassValue;
   type?: ButtonType;
   size?: ButtonSize;
   variant?: ButtonVariant;
