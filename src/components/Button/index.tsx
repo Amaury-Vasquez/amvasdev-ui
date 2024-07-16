@@ -10,7 +10,7 @@ export interface ButtonProps
 }
 
 const Button = ({ children, size = "md", ...props }: ButtonProps) => (
-  <button className="ui-bg-red-100" {...props}>
+  <button className="ui-btn" {...props}>
     {children}
   </button>
 );

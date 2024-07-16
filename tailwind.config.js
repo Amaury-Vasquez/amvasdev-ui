@@ -1,3 +1,5 @@
+import { THEME_LIST } from "./src/themes";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
@@ -5,5 +7,8 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  daisyui: {
+    themes: THEME_LIST,
+  },
+  plugins: [require("daisyui")],
 };
