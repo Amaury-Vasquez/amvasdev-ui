@@ -4,7 +4,12 @@ import Button from ".";
 const meta: Meta = {
   title: "Components/Button",
   component: Button,
-  args: {},
+  args: {
+    size: "md",
+    variant: "none",
+    outlined: false,
+    disabled: false,
+  },
 };
 
 export default meta;

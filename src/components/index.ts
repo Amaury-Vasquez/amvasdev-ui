@@ -3,4 +3,5 @@ export {
   ButtonProps,
   ButtonSize,
   ButtonType,
+  ButtonVariant,
 } from "./Button";
