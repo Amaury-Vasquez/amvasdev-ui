@@ -18,7 +18,7 @@ const preview: Preview = {
         (acc, theme) => Object.assign(acc, { [theme]: theme }),
         {}
       ),
-      defaultTheme: "dracula",
+      defaultTheme: "emerald",
       attributeName: "data-theme",
     }),
   ],

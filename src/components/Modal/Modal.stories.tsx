@@ -26,7 +26,12 @@ const ModalStory = (args: ModalProps) => {
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
       {isOpen ? (
         <Modal {...args} onClose={() => setIsOpen(false)}>
-          Hello, World!
+          <div className="ui-w-full ui-py-4">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+            aliquid iste odio neque dignissimos. Id corporis dicta laborum, modi
+            eligendi voluptates, distinctio autem ullam ut est asperiores
+            voluptatem suscipit odio?
+          </div>
         </Modal>
       ) : null}
     </>
