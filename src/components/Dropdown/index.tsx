@@ -3,10 +3,12 @@ import { HTMLProps, ReactNode, useCallback, useRef, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { useOnClickOutside, useToggle } from "usehooks-ts";
 
+export type DropdownPosition = "right" | "left";
+
 export interface DropdownProps extends HTMLProps<HTMLDivElement> {
   triggerElement: ReactNode;
   children: ReactNode;
-  position?: "right" | "left";
+  position?: DropdownPosition;
   closeTimeout?: number;
   unstyledTrigger?: boolean;
   triggerClassName?: ClassValue;
