@@ -30,6 +30,16 @@ export interface InputProps
   id: string;
 }
 
+/**
+ * Input component
+ * @param {className} className - The className to apply to the input.
+ * @param {label} label - The label to display for the input.
+ * @param {required} required - Whether the input is required. Default: `false`
+ * @param {id} id - The id of the input.
+ * @param {variant} variant - The variant of the input. Default: `base`
+ * @param {size} size - The size of the input. Default: `md`
+ * @param {bordered} bordered - Whether the input should have a border. Default: `true`
+ */
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {

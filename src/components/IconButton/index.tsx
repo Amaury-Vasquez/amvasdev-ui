@@ -10,6 +10,11 @@ export interface IconButtonProps
   icon: ReactNode;
 }
 
+/**
+ * IconButton component
+ * @param {className} className - The className to apply to the icon button.
+ * @param {icon} icon - The icon to display in the button.
+ */
 const IconButton = ({ className, icon, ...props }: IconButtonProps) => (
   <button
     className={clsx(

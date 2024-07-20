@@ -16,6 +16,17 @@ export interface DropdownProps extends HTMLProps<HTMLDivElement> {
   showChevron?: boolean;
 }
 
+/**
+ * Dropdown component
+ * @param {triggerElement} triggerElement - The element that will trigger the dropdown.
+ * @param {children} children - The content to display in the dropdown.
+ * @param {position} position - The position of the dropdown. Default: `left`
+ * @param {closeTimeout} closeTimeout - The time it takes for the dropdown to close. Default: `180`
+ * @param {unstyledTrigger} unstyledTrigger - Whether the trigger should be styled or not. Default: `false`
+ * @param {triggerClassName} triggerClassName - The className to apply to the trigger.
+ * @param {closeOnClickOutside} closeOnClickOutside - Whether the dropdown should close when clicking outside. Default: `true`
+ * @param {showChevron} showChevron - Whether to show the chevron icon. Default: `true`
+ */
 const Dropdown = ({
   className,
   closeTimeout = 180,

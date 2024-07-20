@@ -26,6 +26,14 @@ export interface ButtonProps
   outlined?: boolean;
 }
 
+/**
+ * Button component
+ * @param {className} className - The className to apply to the button.
+ * @param {children} children - The content to display in the button.
+ * @param {size} size - The size of the button. Default: `md`
+ * @param {variant} variant - The variant of the button. Default: `none`
+ * @param {outlined} outlined - Whether the button should be outlined (no bg color and bordered). Default: `false`
+ */
 const Button = ({
   className,
   children,

@@ -15,6 +15,17 @@ export interface ModalProps {
   title?: ReactNode;
 }
 
+/**
+ * Modal component
+ * @param {onClose} onClose - The function to call when the modal is closed.
+ * @param {className} className - The className to apply to the modal.
+ * @param {children} children - The content to display in the modal.
+ * @param {closeTimeout} closeTimeout - The time it takes for the modal to close. Default: `280`
+ * @param {closeOnClickOutside} closeOnClickOutside - Whether the modal should close when clicking outside. Default: `true`
+ * @param {closeOnEsc} closeOnEsc - Whether the modal should close when pressing the escape key. Default: `true`
+ * @param {showCloseButton} showCloseButton - Whether to show the close button. Default: `true`
+ * @param {title} title - The title to display in the modal.
+ */
 const Modal = ({
   onClose,
   className,

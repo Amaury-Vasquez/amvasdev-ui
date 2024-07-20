@@ -1,6 +1,8 @@
 import clsx, { ClassValue } from "clsx";
+import { HTMLProps } from "react";
 
-export interface ColorPaletteProps {
+export interface ColorPaletteProps
+  extends Omit<HTMLProps<HTMLDivElement>, "className"> {
   theme: string;
   className?: ClassValue;
   themeLabel?: string;
@@ -8,12 +10,21 @@ export interface ColorPaletteProps {
   showThemeLabel?: boolean;
 }
 
+/**
+ * ColorPalette component
+ * @param {theme} theme - The theme of the color palette.
+ * @param {className} className - The className to apply to the color palette.
+ * @param {themeLabel} themeLabel - The label to display for the theme.
+ * @param {labelClassName} labelClassName - The className to apply to the theme label.
+ * @param {showThemeLabel} showThemeLabel - Whether to show the theme label. Default: `true`
+ */
 const ColorPalette = ({
   theme,
   className,
   themeLabel,
   labelClassName,
   showThemeLabel = true,
+  ...props
 }: Readonly<ColorPaletteProps>) => (
   <div
     className={clsx(
@@ -21,6 +32,7 @@ const ColorPalette = ({
       className
     )}
     data-theme={theme}
+    {...props}
   >
     {showThemeLabel ? (
       <span
