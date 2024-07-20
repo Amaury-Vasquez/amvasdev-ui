@@ -1,12 +1,26 @@
 import clsx from "clsx";
 import { InputVariant, InputSize } from "../components/Input";
-import { CLASSNAME_PREFIX } from "../prefix";
 
-export function getInputVariant(
-  variant: InputVariant,
-  prefix = CLASSNAME_PREFIX
-) {
-  return `${prefix}input-${variant}`;
+export function getInputVariant(variant: InputVariant) {
+  return clsx({
+    "": variant === "base",
+    "ui-input-primary": variant === "primary",
+    "ui-input-secondary": variant === "secondary",
+    "ui-input-accent": variant === "accent",
+    "ui-input-success": variant === "success",
+    "ui-input-info": variant === "info",
+    "ui-input-warning": variant === "warning",
+    "ui-input-error": variant === "error",
+  });
+}
+
+export function getInputSize(size: InputSize) {
+  return clsx({
+    "ui-input-xs": size === "xs",
+    "ui-input-sm": size === "sm",
+    "ui-input-md": size === "md",
+    "ui-input-lg": size === "lg",
+  });
 }
 
 interface InputClassParams {
@@ -16,17 +30,8 @@ interface InputClassParams {
   prefix?: string;
 }
 
-export function getInputClasses({
-  variant,
-  size,
-  bordered,
-  prefix = CLASSNAME_PREFIX,
-}: InputClassParams) {
-  const inputClass = `${prefix}input`;
-  const sizeClass = `${prefix}input-${size}`;
-  const borderedClass = `${prefix}input-bordered`;
-
-  return clsx(inputClass, getInputVariant(variant), sizeClass, {
-    [borderedClass]: bordered,
+export function getInputClasses({ variant, size, bordered }: InputClassParams) {
+  return clsx("ui-input", getInputVariant(variant), getInputSize(size), {
+    "ui-input-bordered": bordered,
   });
 }
