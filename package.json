@@ -21,7 +21,9 @@
   "keywords": [
     "react",
     "ui",
-    "components"
+    "components",
+    "tailwindcss",
+    "daisyui"
   ],
   "author": "",
   "license": "ISC",
