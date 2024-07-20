@@ -1,9 +1,10 @@
 import { THEME_LIST } from "./src/themes";
+import { CLASSNAME_PREFIX } from "./src/prefix";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
-  prefix: "ui-",
+  prefix: CLASSNAME_PREFIX,
   theme: {
     extend: {
       keyframes: {
