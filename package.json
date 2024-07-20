@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Amaury-Vasquez/-amvasdev-amvasdev-ui.git"
+    "url": "git+https://github.com/Amaury-Vasquez/amvasdev-ui.git"
   },
   "keywords": [
     "react",
@@ -28,9 +28,9 @@
   "author": "",
   "license": "ISC",
   "bugs:": {
-    "url": "https://github.com/Amaury-Vasquez/-amvasdev-amvasdev-ui/issues"
+    "url": "https://github.com/Amaury-Vasquez/amvasdev-ui/issues"
   },
-  "homepage": "https://github.com/Amaury-Vasquez/-amvasdev-amvasdev-ui#readme",
+  "homepage": "https://github.com/Amaury-Vasquez/amvasdev-ui#readme",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
     "@storybook/addon-essentials": "^8.2.4",
