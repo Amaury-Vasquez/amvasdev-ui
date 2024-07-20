@@ -2,18 +2,21 @@ import clsx, { ClassValue } from "clsx";
 import { forwardRef, HTMLProps } from "react";
 import { getInputClasses } from "../../utilities/input";
 
-export type InputVariant =
-  | "base"
-  | "ghost"
-  | "primary"
-  | "secondary"
-  | "accent"
-  | "success"
-  | "info"
-  | "warning"
-  | "error";
+export const INPUT_VARIANTS = [
+  "base",
+  "ghost",
+  "primary",
+  "secondary",
+  "accent",
+  "success",
+  "info",
+  "warning",
+  "error",
+] as const;
+export type InputVariant = (typeof INPUT_VARIANTS)[number];
 
-export type InputSize = "xs" | "sm" | "md" | "lg";
+export const INPUT_SIZES = ["xs", "sm", "md", "lg"] as const;
+export type InputSize = (typeof INPUT_SIZES)[number];
 
 export interface InputProps
   extends Omit<HTMLProps<HTMLInputElement>, "size" | "className"> {
