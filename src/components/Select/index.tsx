@@ -13,6 +13,8 @@ export interface SelectProps {
   className?: ClassValue;
   containerClassName?: ClassValue;
   labelClassName?: ClassValue;
+  optionsClassName?: ClassValue;
+  selectedOptionClassName?: ClassValue;
   size?: SelectSize;
   label?: string;
   bordered?: boolean;
@@ -39,6 +41,8 @@ const Select = ({
   size = "md",
   label,
   labelClassName,
+  optionsClassName,
+  selectedOptionClassName,
   bordered = true,
   id,
   errorMessage,
@@ -135,8 +139,10 @@ const Select = ({
                   },
                   {
                     "hover:ui-bg-base-200": option !== value,
-                    "ui-bg-base-200": option === value,
-                  }
+                  },
+                  optionsClassName,
+                  option === value &&
+                    clsx("ui-bg-base-200", selectedOptionClassName)
                 )}
               >
                 {option}
