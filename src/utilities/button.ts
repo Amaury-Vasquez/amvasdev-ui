@@ -10,7 +10,6 @@ interface ButtonClassParams {
 
 export function getButtonVariant(variant: ButtonVariant) {
   return clsx({
-    "": variant === "none",
     "ui-btn-primary": variant === "primary",
     "ui-btn-secondary": variant === "secondary",
     "ui-btn-accent": variant === "accent",

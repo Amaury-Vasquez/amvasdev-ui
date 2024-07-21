@@ -5,7 +5,7 @@ import { getButtonClasses } from "../../utilities";
 export type ButtonSize = "xs" | "sm" | "md" | "lg";
 export type ButtonType = "button" | "submit" | "reset";
 export type ButtonVariant =
-  | "none"
+  | "base"
   | "neutral"
   | "primary"
   | "secondary"
@@ -31,14 +31,14 @@ export interface ButtonProps
  * @param {className} className - The className to apply to the button.
  * @param {children} children - The content to display in the button.
  * @param {size} size - The size of the button. Default: `md`
- * @param {variant} variant - The variant of the button. Default: `none`
+ * @param {variant} variant - The variant of the button. Default: `base`
  * @param {outlined} outlined - Whether the button should be outlined (no bg color and bordered). Default: `false`
  */
 const Button = ({
   className,
   children,
   size = "md",
-  variant = "none",
+  variant = "base",
   outlined = false,
   disabled,
   ...props

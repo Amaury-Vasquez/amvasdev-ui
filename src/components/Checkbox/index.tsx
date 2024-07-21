@@ -14,7 +14,7 @@ export const CHECKBOX_VARIANTS = [
   "warning",
   "info",
   "error",
-  "none",
+  "base",
 ] as const;
 export type CheckboxVariant = (typeof CHECKBOX_VARIANTS)[number];
 
@@ -42,7 +42,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       labelClassName,
       id,
       size = "md",
-      variant = "none",
+      variant = "base",
       errorMessage,
       required,
       ...props
@@ -92,4 +92,5 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   )
 );
 
+Checkbox.displayName = "Checkbox";
 export default Checkbox;
