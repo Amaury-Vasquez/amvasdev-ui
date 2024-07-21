@@ -1,5 +1,7 @@
 import clsx, { ClassValue } from "clsx";
 import { forwardRef, HTMLProps } from "react";
+import ErrorLabel from "../ErrorLabel";
+import Label from "../Label";
 import { getInputClasses } from "../../utilities/input";
 
 export const INPUT_VARIANTS = [
@@ -26,6 +28,7 @@ export interface InputProps
   size?: InputSize;
   variant?: InputVariant;
   label?: string;
+  errorMessage?: string;
   required?: boolean;
   id: string;
 }
@@ -52,22 +55,20 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       required,
       labelClassName,
       type,
+      errorMessage,
       ...props
     },
     ref
   ) => (
     <div className="ui-flex ui-flex-col ui-w-full">
       {label ? (
-        <label
+        <Label
           htmlFor={id}
-          className={clsx(
-            "ui-label ui-pl-1 ui-flex ui-justify-start ui-gap-1",
-            labelClassName
-          )}
+          required={required}
+          className={clsx("ui-pl-1 ui-justify-start", labelClassName)}
         >
           {label}
-          {required ? <span className="ui-text-error">*</span> : null}
-        </label>
+        </Label>
       ) : null}
       <input
         id={id}
@@ -81,6 +82,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
         {...props}
       />
+      {errorMessage ? (
+        <ErrorLabel text={errorMessage} className="ui-pt-1 ui-pl-1" />
+      ) : null}
     </div>
   )
 );

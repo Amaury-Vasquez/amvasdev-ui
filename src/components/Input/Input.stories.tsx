@@ -25,6 +25,8 @@ type Story = StoryObj<typeof Input>;
 export const Default: Story = {
   args: {
     required: false,
+    variant: "base",
+    errorMessage: "",
   },
 
   render: (args) => (
