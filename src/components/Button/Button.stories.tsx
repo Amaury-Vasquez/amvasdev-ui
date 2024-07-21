@@ -17,5 +17,10 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
-  render: (args) => <Button {...args}>Click me</Button>,
+  args: {
+    variant: "primary",
+    outlined: true
+  },
+
+  render: (args) => <Button {...args}>Click me</Button>
 };
