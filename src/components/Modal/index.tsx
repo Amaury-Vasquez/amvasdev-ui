@@ -1,7 +1,8 @@
 import clsx, { ClassValue } from "clsx";
-import { ReactNode, useCallback, useState, useRef } from "react";
+import { ReactNode, useRef } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { useEventListener, useOnClickOutside } from "usehooks-ts";
+import { useClosableContainer } from "../../hooks";
+import Button, { ButtonProps } from "../Button";
 import IconButton from "../IconButton";
 
 export interface ModalProps {
@@ -13,6 +14,9 @@ export interface ModalProps {
   closeOnEsc?: boolean;
   showCloseButton?: boolean;
   title?: ReactNode;
+  btnContainerClass?: ClassValue;
+  cancelButton?: ButtonProps;
+  confirmButton?: ButtonProps;
 }
 
 /**
@@ -35,28 +39,18 @@ const Modal = ({
   closeOnEsc = true,
   showCloseButton = true,
   title,
+  btnContainerClass,
+  cancelButton,
+  confirmButton,
 }: ModalProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [isClosing, setIsClosing] = useState(false);
-
-  const handleClose = useCallback(() => {
-    if (!isClosing) {
-      setIsClosing(true);
-      setTimeout(() => {
-        setIsClosing(false);
-        onClose();
-      }, closeTimeout);
-    }
-  }, []);
-
-  useEventListener("keydown", (event) => {
-    if (event.key === "Escape" && closeOnEsc) {
-      handleClose();
-    }
+  const { isClosing, handleClose } = useClosableContainer(ref, onClose, {
+    closeTimeout,
+    closeOnEsc,
+    closeOnClickOutside,
   });
-  useOnClickOutside(ref, closeOnClickOutside ? handleClose : () => {});
-
   const showHeader = title || showCloseButton;
+  const showFooter = cancelButton || confirmButton;
 
   return (
     <dialog
@@ -107,7 +101,32 @@ const Modal = ({
             ) : null}
           </div>
         ) : null}
-        {children}
+        <div className="ui-h-full">{children}</div>
+        {showFooter ? (
+          <div
+            className={clsx(
+              "ui-w-full ui-grid",
+              {
+                "ui-grid sm:ui-grid-cols-2 ui-grid-cols-1 ui-gap-4":
+                  cancelButton && confirmButton,
+              },
+              btnContainerClass
+            )}
+          >
+            {cancelButton && (
+              <Button
+                {...cancelButton}
+                className={clsx("ui-w-full", cancelButton.className)}
+              />
+            )}
+            {confirmButton && (
+              <Button
+                {...confirmButton}
+                className={clsx("ui-w-full", confirmButton.className)}
+              />
+            )}
+          </div>
+        ) : null}
       </div>
     </dialog>
   );

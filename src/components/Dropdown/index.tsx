@@ -1,7 +1,8 @@
 import clsx, { ClassValue } from "clsx";
 import { HTMLProps, ReactNode, useCallback, useRef, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import { useOnClickOutside, useToggle } from "usehooks-ts";
+import { useToggle } from "usehooks-ts";
+import { useClosableContainer } from "../../hooks";
 
 export type DropdownPosition = "right" | "left";
 
@@ -39,28 +40,14 @@ const Dropdown = ({
   position = "left",
 }: DropdownProps) => {
   const [isOpen, toggleIsOpen] = useToggle();
-  const [isClosing, setIsClosing] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
-  const handleClose = useCallback(() => {
-    setIsClosing(true);
-    setTimeout(() => {
-      toggleIsOpen();
-      setIsClosing(false);
-    }, closeTimeout);
-  }, [closeTimeout, toggleIsOpen]);
+  const { isClosing, handleClose } = useClosableContainer(ref, toggleIsOpen);
 
   const handleClick = useCallback(() => {
     if (isOpen) {
       handleClose();
     } else toggleIsOpen();
   }, [closeTimeout, isOpen, toggleIsOpen]);
-
-  useOnClickOutside(ref, () => {
-    if (isOpen && closeOnClickOutside) {
-      handleClose();
-    }
-  });
 
   return (
     <div className="ui-relative ui-w-fit" ref={ref}>
