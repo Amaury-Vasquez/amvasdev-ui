@@ -1,6 +1,7 @@
-# Facile UI
+# Amvasdev UI
 
 Custom UI components for React Applications.
+Uses daisyUI for component styling and theming.
 
 ## Installation
 
