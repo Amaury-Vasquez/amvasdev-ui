@@ -54,10 +54,12 @@ const ModalWithButtonsStory = (args: ModalProps) => {
           cancelButton={{
             children: "Cancel",
             variant: "neutral",
+            onClick: () => console.log("Cancel"),
           }}
           confirmButton={{
             children: "Confirm",
             variant: "primary",
+            onClick: () => console.log("Confirm"),
           }}
         >
           <div className="ui-w-full ui-py-4">
@@ -73,4 +75,8 @@ const ModalWithButtonsStory = (args: ModalProps) => {
 };
 export const WithButtons: Story = {
   render: (args) => <ModalWithButtonsStory {...args} />,
+  args: {
+    closeOnCancel: true,
+    closeOnConfirm: true,
+  },
 };

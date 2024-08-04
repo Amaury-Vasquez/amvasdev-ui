@@ -17,7 +17,14 @@ export interface ModalProps {
   btnContainerClass?: ClassValue;
   cancelButton?: ButtonProps;
   confirmButton?: ButtonProps;
+  closeOnCancel?: boolean;
+  closeOnConfirm?: boolean;
 }
+
+const handleButtonClick = async (onClose: () => void, onClick = () => {}) => {
+  onClick();
+  onClose();
+};
 
 /**
  * Modal component
@@ -42,6 +49,8 @@ const Modal = ({
   btnContainerClass,
   cancelButton,
   confirmButton,
+  closeOnCancel = true,
+  closeOnConfirm = true,
 }: ModalProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { isClosing, handleClose } = useClosableContainer(ref, onClose, {
@@ -117,12 +126,32 @@ const Modal = ({
               <Button
                 {...cancelButton}
                 className={clsx("ui-w-full", cancelButton.className)}
+                onClick={(e) => {
+                  if (cancelButton.onClick) {
+                    if (closeOnCancel) {
+                      handleButtonClick(handleClose, () =>
+                        // @ts-ignore
+                        cancelButton.onClick(e)
+                      );
+                    } else cancelButton.onClick(e);
+                  }
+                }}
               />
             )}
             {confirmButton && (
               <Button
                 {...confirmButton}
                 className={clsx("ui-w-full", confirmButton.className)}
+                onClick={(e) => {
+                  if (confirmButton.onClick) {
+                    if (closeOnConfirm) {
+                      handleButtonClick(handleClose, () =>
+                        // @ts-ignore
+                        confirmButton.onClick(e)
+                      );
+                    } else confirmButton.onClick(e);
+                  }
+                }}
               />
             )}
           </div>
