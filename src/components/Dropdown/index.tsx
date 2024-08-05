@@ -14,6 +14,7 @@ export interface DropdownProps extends HTMLProps<HTMLDivElement> {
   unstyledTrigger?: boolean;
   triggerClassName?: ClassValue;
   closeOnClickOutside?: boolean;
+  closeOnEsc?: boolean;
   showChevron?: boolean;
 }
 
@@ -26,6 +27,7 @@ export interface DropdownProps extends HTMLProps<HTMLDivElement> {
  * @param {unstyledTrigger} unstyledTrigger - Whether the trigger should be styled or not. Default: `false`
  * @param {triggerClassName} triggerClassName - The className to apply to the trigger.
  * @param {closeOnClickOutside} closeOnClickOutside - Whether the dropdown should close when clicking outside. Default: `true`
+ * @param {closeOnEsc} closeOnEsc - Whether the dropdown should close when pressing the escape key. Default: `true`
  * @param {showChevron} showChevron - Whether to show the chevron icon. Default: `true`
  */
 const Dropdown = ({
@@ -36,17 +38,24 @@ const Dropdown = ({
   triggerClassName,
   triggerElement,
   closeOnClickOutside = true,
+  closeOnEsc = true,
   showChevron = true,
   position = "left",
 }: DropdownProps) => {
   const [isOpen, toggleIsOpen] = useToggle();
   const ref = useRef<HTMLDivElement>(null);
-  const { isClosing, handleClose } = useClosableContainer(ref, toggleIsOpen);
+  const { isClosing, handleClose } = useClosableContainer(ref, toggleIsOpen, {
+    closeTimeout,
+    closeOnClickOutside,
+    closeOnEsc,
+  });
 
   const handleClick = useCallback(() => {
-    if (isOpen) {
-      handleClose();
-    } else toggleIsOpen();
+    if (!isClosing) {
+      if (isOpen) {
+        handleClose();
+      } else toggleIsOpen();
+    }
   }, [closeTimeout, isOpen, toggleIsOpen]);
 
   return (
