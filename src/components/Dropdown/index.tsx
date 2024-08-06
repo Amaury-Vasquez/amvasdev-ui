@@ -1,5 +1,5 @@
 import clsx, { ClassValue } from "clsx";
-import { HTMLProps, ReactNode, useCallback, useRef, useState } from "react";
+import { HTMLProps, ReactNode, useCallback, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { useToggle } from "usehooks-ts";
 import { useClosableContainer } from "../../hooks";
