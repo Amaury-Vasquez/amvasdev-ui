@@ -40,7 +40,7 @@ const Dropdown = ({
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleButtonClick = () => {
-    setIsOpen((prev) => !prev);
+    if (!isOpen) setIsOpen(true);
   };
 
   return (
