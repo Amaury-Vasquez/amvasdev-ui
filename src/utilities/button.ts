@@ -5,7 +5,6 @@ interface ButtonClassParams {
   size?: ButtonSize;
   variant: ButtonVariant;
   outlined?: boolean;
-  prefix?: string;
 }
 
 export function getButtonVariant(variant: ButtonVariant) {
