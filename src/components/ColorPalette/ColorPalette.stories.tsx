@@ -6,6 +6,7 @@ const meta: Meta = {
   title: "Components/Color Palette",
   component: ColorPalette,
   args: {
+    isSelected: false,
     theme: "emerald",
     showThemeLabel: true,
   },
@@ -31,7 +32,7 @@ export const Default: Story = {
 
 export const AllThemes: Story = {
   args: {
-    theme: "winter"
+    theme: "winter",
   },
 
   render: () => (
@@ -40,5 +41,5 @@ export const AllThemes: Story = {
         <ColorPalette key={theme} theme={theme} />
       ))}
     </div>
-  )
+  ),
 };
