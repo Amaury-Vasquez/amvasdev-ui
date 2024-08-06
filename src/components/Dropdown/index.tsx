@@ -44,7 +44,12 @@ const Dropdown = ({
 }: DropdownProps) => {
   const [isOpen, toggleIsOpen] = useToggle();
   const ref = useRef<HTMLDivElement>(null);
-  const { isClosing, handleClose } = useClosableContainer(ref, toggleIsOpen, {
+  const closeContainer = useCallback(() => {
+    if (isOpen) {
+      toggleIsOpen();
+    }
+  }, [isOpen]);
+  const { isClosing, handleClose } = useClosableContainer(ref, closeContainer, {
     closeTimeout,
     closeOnClickOutside,
     closeOnEsc,
