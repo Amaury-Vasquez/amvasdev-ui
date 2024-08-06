@@ -6,9 +6,9 @@ const meta: Meta = {
   component: Dropdown,
   args: {
     showChevron: true,
-    closeOnClickOutside: true,
-    triggerElement: "Dropdown",
+    closeOnEsc: true,
     unstyledTrigger: false,
+    triggerElement: "Dropdown",
   },
 };
 

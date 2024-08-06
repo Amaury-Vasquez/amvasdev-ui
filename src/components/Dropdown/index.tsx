@@ -1,8 +1,7 @@
 import clsx, { ClassValue } from "clsx";
-import { HTMLProps, ReactNode, useCallback, useRef } from "react";
+import { HTMLProps, ReactNode, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import { useToggle } from "usehooks-ts";
-import { useClosableContainer } from "../../hooks";
+import Menu from "./Menu";
 
 export type DropdownPosition = "right" | "left";
 
@@ -13,7 +12,6 @@ export interface DropdownProps extends HTMLProps<HTMLDivElement> {
   closeTimeout?: number;
   unstyledTrigger?: boolean;
   triggerClassName?: ClassValue;
-  closeOnClickOutside?: boolean;
   closeOnEsc?: boolean;
   showChevron?: boolean;
 }
@@ -26,7 +24,6 @@ export interface DropdownProps extends HTMLProps<HTMLDivElement> {
  * @param {closeTimeout} closeTimeout - The time it takes for the dropdown to close. Default: `180`
  * @param {unstyledTrigger} unstyledTrigger - Whether the trigger should be styled or not. Default: `false`
  * @param {triggerClassName} triggerClassName - The className to apply to the trigger.
- * @param {closeOnClickOutside} closeOnClickOutside - Whether the dropdown should close when clicking outside. Default: `true`
  * @param {closeOnEsc} closeOnEsc - Whether the dropdown should close when pressing the escape key. Default: `true`
  * @param {showChevron} showChevron - Whether to show the chevron icon. Default: `true`
  */
@@ -37,43 +34,26 @@ const Dropdown = ({
   unstyledTrigger,
   triggerClassName,
   triggerElement,
-  closeOnClickOutside = true,
   closeOnEsc = true,
   showChevron = true,
   position = "left",
 }: DropdownProps) => {
-  const [isOpen, toggleIsOpen] = useToggle();
-  const ref = useRef<HTMLDivElement>(null);
-  const closeContainer = useCallback(() => {
-    if (isOpen) {
-      toggleIsOpen();
-    }
-  }, [isOpen]);
-  const { isClosing, handleClose } = useClosableContainer(ref, closeContainer, {
-    closeTimeout,
-    closeOnClickOutside,
-    closeOnEsc,
-  });
-
-  const handleClick = useCallback(() => {
-    if (!isClosing) {
-      if (isOpen) {
-        handleClose();
-      } else toggleIsOpen();
-    }
-  }, [closeTimeout, isOpen, toggleIsOpen]);
+  const [isOpen, setIsOpen] = useState(false);
+  const handleButtonClick = () => {
+    setIsOpen((prev) => !prev);
+  };
 
   return (
-    <div className="ui-relative ui-w-fit" ref={ref}>
+    <div className="ui-relative ui-w-fit">
       <button
         className={clsx(
           {
-            "ui-btn ui-btn-ghost ui-font-normal ui-flex ui-items-center ui-gap-2":
+            "ui-btn ui-btn-ghost ui-font-normal ui-flex ui-items-center ui-gap-2 ui-outline-none focus-visible:ui-border-2 focus-visible:ui-border-primary focus-visible:ui-border-solid":
               !unstyledTrigger,
           },
           triggerClassName
         )}
-        onClick={handleClick}
+        onClick={handleButtonClick}
       >
         {triggerElement}
         {showChevron ? (
@@ -86,22 +66,15 @@ const Dropdown = ({
         ) : null}
       </button>
       {isOpen ? (
-        <div
-          className={clsx(
-            "ui-dropdown-content ui-absolute ui-top-full ui-menu ui-bg-base-100 ui-rounded-box ui-z-[1] ui-p-2 ui-shadow",
-            {
-              "ui-animate-scale-up": isClosing,
-              "ui-animate-scale-down": !isClosing,
-            },
-            {
-              "ui-left-0 ui-origin-top-left": position === "left",
-              "ui-right-0 ui-origin-top-right": position === "right",
-            },
-            className
-          )}
+        <Menu
+          closeMenu={() => setIsOpen(false)}
+          closeTimeout={closeTimeout}
+          closeOnEsc={closeOnEsc}
+          position={position}
+          className={className}
         >
           {children}
-        </div>
+        </Menu>
       ) : null}
     </div>
   );
