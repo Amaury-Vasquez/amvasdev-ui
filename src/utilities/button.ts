@@ -16,6 +16,8 @@ export function getButtonVariant(variant: ButtonVariant) {
     "ui-btn-info": variant === "info",
     "ui-btn-warning": variant === "warning",
     "ui-btn-error": variant === "error",
+    "ui-btn-ghost": variant === "ghost",
+    "ui-btn-link": variant === "link",
   });
 }
 
