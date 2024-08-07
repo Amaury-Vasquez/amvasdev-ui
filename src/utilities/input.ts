@@ -11,6 +11,7 @@ export function getInputVariant(variant: InputVariant) {
     "ui-input-info": variant === "info",
     "ui-input-warning": variant === "warning",
     "ui-input-error": variant === "error",
+    "ui-input-ghost": variant === "ghost",
   });
 }
 
