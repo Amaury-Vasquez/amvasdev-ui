@@ -29,7 +29,7 @@ const Menu = ({
     <div
       ref={ref}
       className={clsx(
-        "ui-dropdown-content ui-absolute ui-top-full ui-menu ui-bg-base-100 ui-rounded-box ui-z-[1] ui-p-2 ui-shadow ui-w-full",
+        "ui-dropdown-content ui-absolute ui-top-full ui-menu ui-bg-base-100 ui-rounded-box ui-z-[1] ui-p-2 ui-shadow",
         {
           "ui-animate-scale-up": isClosing,
           "ui-animate-scale-down": !isClosing,
