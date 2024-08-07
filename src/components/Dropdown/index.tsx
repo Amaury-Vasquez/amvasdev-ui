@@ -14,6 +14,7 @@ export interface DropdownProps extends HTMLProps<HTMLDivElement> {
   triggerClassName?: ClassValue;
   closeOnEsc?: boolean;
   showChevron?: boolean;
+  menuClassName?: string;
 }
 
 /**
@@ -26,6 +27,7 @@ export interface DropdownProps extends HTMLProps<HTMLDivElement> {
  * @param {triggerClassName} triggerClassName - The className to apply to the trigger.
  * @param {closeOnEsc} closeOnEsc - Whether the dropdown should close when pressing the escape key. Default: `true`
  * @param {showChevron} showChevron - Whether to show the chevron icon. Default: `true`
+ * @param {menuClassName} menuClassName - The className to apply to the dropdown menu.
  */
 const Dropdown = ({
   className,
@@ -37,6 +39,7 @@ const Dropdown = ({
   closeOnEsc = true,
   showChevron = true,
   position = "left",
+  menuClassName,
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleButtonClick = () => {
@@ -44,7 +47,7 @@ const Dropdown = ({
   };
 
   return (
-    <div className="ui-relative ui-w-fit">
+    <div className={clsx("ui-relative ui-w-fit", className)}>
       <button
         className={clsx(
           {
@@ -71,7 +74,7 @@ const Dropdown = ({
           closeTimeout={closeTimeout}
           closeOnEsc={closeOnEsc}
           position={position}
-          className={className}
+          className={menuClassName}
         >
           {children}
         </Menu>
