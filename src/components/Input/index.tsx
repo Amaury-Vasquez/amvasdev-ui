@@ -1,5 +1,5 @@
 import clsx, { ClassValue } from "clsx";
-import { forwardRef, HTMLProps } from "react";
+import { forwardRef, HTMLProps, ReactNode } from "react";
 import ErrorLabel from "../ErrorLabel";
 import Label from "../Label";
 import { getInputClasses } from "../../utilities/input";
@@ -30,6 +30,8 @@ export interface InputProps
   label?: string;
   errorMessage?: string;
   required?: boolean;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
   id: string;
 }
 
@@ -56,6 +58,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       labelClassName,
       type,
       errorMessage,
+      leftIcon,
+      rightIcon,
       ...props
     },
     ref
@@ -70,18 +74,35 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {label}
         </Label>
       ) : null}
-      <input
-        id={id}
-        data-testid={id}
-        ref={ref}
-        required={required}
-        type={type}
-        className={clsx(
-          getInputClasses({ variant, size, bordered }),
-          className
-        )}
-        {...props}
-      />
+      <div className="ui-relative ui-w-full">
+        {leftIcon ? (
+          <span className="ui-absolute ui-h-full ui-flex ui-items-center ui-px-2 ui-top-0">
+            {leftIcon}
+          </span>
+        ) : null}
+        <input
+          id={id}
+          data-testid={id}
+          ref={ref}
+          required={required}
+          type={type}
+          className={clsx(
+            "ui-w-full",
+            getInputClasses({ variant, size, bordered }),
+            {
+              "ui-pl-8": leftIcon,
+              "ui-pr-8": rightIcon,
+            },
+            className
+          )}
+          {...props}
+        />
+        {rightIcon ? (
+          <span className="ui-absolute ui-right-0 ui-h-full ui-flex ui-items-center ui-px-2 ui-top-0">
+            {rightIcon}
+          </span>
+        ) : null}
+      </div>
       {errorMessage ? (
         <ErrorLabel text={errorMessage} className="ui-pt-1 ui-pl-1" />
       ) : null}
@@ -91,3 +112,4 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
 Input.displayName = "Input";
 export default Input;
+export { default as PasswordInput } from "./PasswordInput";

@@ -15,7 +15,13 @@ export {
 } from "./Dropdown";
 export { default as ErrorLabel, ErrorLabelProps } from "./ErrorLabel";
 export { default as IconButton, IconButtonProps } from "./IconButton";
-export { default as Input, InputProps, InputSize, InputVariant } from "./Input";
+export {
+  default as Input,
+  InputProps,
+  InputSize,
+  InputVariant,
+  PasswordInput,
+} from "./Input";
 export { default as Label, LabelProps } from "./Label";
 export { default as Modal, ModalProps } from "./Modal";
 export {
