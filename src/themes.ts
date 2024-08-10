@@ -1,4 +1,14 @@
-export const LIGHT_THEMES = ["emerald", "winter"];
-export const DARK_THEMES = ["dracula", "night"];
-
-export const THEME_LIST = [...LIGHT_THEMES, ...DARK_THEMES];
+export const THEME_LIST = [
+  "emerald",
+  "dracula",
+  "winter",
+  "night",
+  "light",
+  "halloween",
+  "autumn",
+  "business",
+  "nord",
+  "dim",
+  "lemonade",
+  "sunset",
+];
