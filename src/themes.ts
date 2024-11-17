@@ -11,4 +11,5 @@ export const THEME_LIST = [
   "dim",
   "lemonade",
   "sunset",
+  "valentine",
 ];
