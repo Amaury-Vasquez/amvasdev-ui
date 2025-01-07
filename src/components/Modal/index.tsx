@@ -105,7 +105,6 @@ const Modal = ({
               <IconButton
                 icon={<AiOutlineClose className="ui-text-xl" />}
                 onClick={handleClose}
-                variant="primary"
               />
             ) : null}
           </div>
