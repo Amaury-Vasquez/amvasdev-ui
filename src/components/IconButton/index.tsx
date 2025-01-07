@@ -25,7 +25,7 @@ const IconButton = ({
   return (
     <button
       className={clsx(
-        "ui-relative ui-btn-ghost ui-rounded-full ui-w-fit ui-p-2 ui-transition-colors",
+        "ui-relative ui-btn-ghost ui-rounded-full ui-w-fit ui-p-2 ui-transition-colors ui-flex ui-items-center ui-justify-center",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
