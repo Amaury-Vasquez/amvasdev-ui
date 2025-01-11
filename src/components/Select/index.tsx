@@ -14,6 +14,7 @@ export interface SelectProps {
   containerClassName?: ClassValue;
   labelClassName?: ClassValue;
   optionsClassName?: ClassValue;
+  selectClassName?: ClassValue;
   selectedOptionClassName?: ClassValue;
   size?: SelectSize;
   label?: string;
@@ -43,6 +44,7 @@ const Select = ({
   labelClassName,
   optionsClassName,
   selectedOptionClassName,
+  selectClassName,
   bordered = true,
   id,
   errorMessage,
@@ -94,7 +96,7 @@ const Select = ({
           {required ? <span className="ui-text-error ui-ml-1">*</span> : null}
         </label>
       ) : null}
-      <div className="ui-relative ui-w-fit" ref={ref}>
+      <div className={clsx("ui-relative ui-w-fit", selectClassName)} ref={ref}>
         <button
           className={clsx(
             "ui-select ui-items-center",
