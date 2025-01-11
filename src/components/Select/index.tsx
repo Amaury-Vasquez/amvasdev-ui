@@ -95,6 +95,7 @@ const Select = ({
           )}
           id={id}
           onClick={toggleIsOpen}
+          type="button"
         >
           {value?.text ?? defaultValue?.text ?? placeholder}
         </button>
@@ -130,6 +131,7 @@ const Select = ({
                   option === value &&
                     clsx("ui-bg-base-200", selectedOptionClassName)
                 )}
+                type="button"
               >
                 {option.text}
               </button>
