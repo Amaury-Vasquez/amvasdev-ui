@@ -32,4 +32,9 @@ export {
   RadioGroupVariant,
   RadioOption,
 } from "./RadioGroup";
-export { default as Select, SelectProps, SelectSize } from "./Select";
+export {
+  default as Select,
+  SelectProps,
+  SelectSize,
+  SelectOption,
+} from "./Select";

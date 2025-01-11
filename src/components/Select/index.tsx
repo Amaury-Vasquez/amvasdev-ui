@@ -1,15 +1,20 @@
 import clsx, { ClassValue } from "clsx";
-import { useOnClickOutside } from "usehooks-ts";
+import { useRef } from "react";
+import { useOnClickOutside, useToggle } from "usehooks-ts";
 import ErrorLabel from "../ErrorLabel";
-import { useRef, useState } from "react";
 
 export const SELECT_SIZES = ["xs", "sm", "md", "lg"] as const;
 export type SelectSize = (typeof SELECT_SIZES)[number];
 
+export interface SelectOption {
+  id: string;
+  text: string;
+}
+
 export interface SelectProps {
   id: string;
-  options: string[];
-  onChange: (option: string) => void;
+  options: SelectOption[];
+  onChange: (option: SelectOption) => void;
   className?: ClassValue;
   containerClassName?: ClassValue;
   labelClassName?: ClassValue;
@@ -22,8 +27,8 @@ export interface SelectProps {
   errorMessage?: string;
   required?: boolean;
   placeholder?: string;
-  defaultValue?: string;
-  value?: string;
+  defaultValue?: SelectOption;
+  value?: SelectOption;
 }
 
 const getSelectSize = (size: SelectSize) => {
@@ -54,30 +59,12 @@ const Select = ({
   defaultValue,
   required,
 }: SelectProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const [isOpen, toggleIsOpen] = useToggle(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const onOpen = () => setIsOpen(true);
-  const onClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setIsOpen(false);
-      setIsClosing(false);
-    }, 180);
-  };
-
-  const toggleIsFocused = () => {
-    if (isOpen) {
-      onClose();
-    } else if (!isClosing) {
-      onOpen();
-    }
-  };
-
   const handleClickOutside = () => {
-    if (isOpen && !isClosing) {
-      onClose();
+    if (isOpen) {
+      toggleIsOpen();
     }
   };
 
@@ -107,34 +94,31 @@ const Select = ({
             className
           )}
           id={id}
-          onClick={toggleIsFocused}
+          onClick={toggleIsOpen}
         >
-          {value ?? defaultValue ?? placeholder}
+          {value?.text ?? defaultValue?.text ?? placeholder}
         </button>
         {isOpen ? (
           <div
             className={clsx(
-              "ui-absolute ui-flex ui-flex-col ui-origin-top-left ui-w-full ui-rounded-lg ui-shadow-lg ui-left-0 ui-border ui-border-solid ui-border-base-200",
+              "ui-absolute ui-flex ui-flex-col ui-w-full ui-rounded-lg ui-shadow-lg ui-left-0 ui-border ui-border-solid ui-border-base-200",
               {
                 "ui-top-8": size === "xs",
                 "ui-top-9": size === "sm",
                 "ui-top-[52px]": size === "md",
                 "ui-top-[68px]": size === "lg",
-                "ui-animate-scale-down": !isClosing,
-                "ui-animate-scale-up": isClosing,
               }
             )}
           >
             {options.map((option, idx) => (
               <button
-                key={option}
+                key={option.id}
                 onClick={() => {
-                  console.log(option);
                   onChange(option);
-                  toggleIsFocused();
+                  toggleIsOpen();
                 }}
                 className={clsx(
-                  "ui-px-4 ui-text-sm ui-font-semibold ui-p-4 ui-justify-start ui-flex ui-w-full ui-transition-colors",
+                  "ui-px-4 ui-bg-base-100 ui-text-sm ui-font-semibold ui-p-4 ui-justify-start ui-flex ui-w-full ui-transition-colors",
                   {
                     "ui-rounded-t-lg": idx === 0,
                     "ui-rounded-b-lg": idx === options.length - 1,
@@ -147,7 +131,7 @@ const Select = ({
                     clsx("ui-bg-base-200", selectedOptionClassName)
                 )}
               >
-                {option}
+                {option.text}
               </button>
             ))}
           </div>

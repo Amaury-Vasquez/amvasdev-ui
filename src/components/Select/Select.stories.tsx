@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Select, { SelectProps, SELECT_SIZES } from ".";
+import Select, { SelectProps, SELECT_SIZES, SelectOption } from ".";
 import { useState } from "react";
 
 const meta: Meta = {
@@ -13,7 +13,11 @@ const meta: Meta = {
     errorMessage: "",
     label: "Select",
     placeholder: "Select an option",
-    options: ["Option 1", "Option 2", "Option 3"],
+    options: [
+      { id: "1", text: "Option 1" },
+      { id: "2", text: "Option 2" },
+      { id: "3", text: "Option 3" },
+    ],
   },
   argTypes: {
     size: {
@@ -28,7 +32,7 @@ export default meta;
 type Story = StoryObj<typeof Select>;
 
 const SelectStory = (args: SelectProps) => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<SelectOption>();
 
   return (
     <Select {...args} value={value} onChange={setValue} className="ui-w-80" />
