@@ -21,6 +21,7 @@ const IconButton = ({
   ...props
 }: IconButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   return (
     <button
@@ -30,10 +31,12 @@ const IconButton = ({
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
       {...props}
     >
       {icon}
-      {isHovered && tooltip ? (
+      {(isHovered || isFocused) && tooltip ? (
         <span className="ui-absolute ui-left-1/2 ui-right-1/2 -ui-translate-x-1/2 ui-bottom-[calc(100%+0.5rem)] ui-w-fit">
           <span
             className={clsx(
