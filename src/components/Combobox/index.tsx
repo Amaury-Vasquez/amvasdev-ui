@@ -73,6 +73,11 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
         : possibleOptions;
     }, [options, value, optionLimit]);
 
+    const focusInput = () => {
+      const input: HTMLInputElement = document.querySelector(`#${id}`)!;
+      input.focus();
+    };
+
     const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
       // Avoids blur being called when clearing search
       if (e.relatedTarget?.id === "clear_search") return;
@@ -82,18 +87,23 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       }
     };
 
-    const handleSelect = (option: IComboboxOption) => {
-      onSelect(option);
-      onChange(option.text);
-      setIsFocused(false);
+    const handleOptionClick = (option: IComboboxOption) => {
+      if (selectedOption?.id === option.id) {
+        onSelect(null);
+        onChange("");
+        focusInput();
+      } else {
+        onSelect(option);
+        onChange(option.text);
+        setIsFocused(false);
+      }
     };
 
     const handleClearSearch = () => {
       onChange("");
       onSelect(null);
       setIsFocused(true);
-      const input: HTMLInputElement = document.querySelector(`#${id}`)!;
-      input.focus();
+      focusInput();
     };
 
     const handleChange = (e: FormEvent<HTMLInputElement>) => {
@@ -148,7 +158,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                   {...option}
                   isSelected={option.id === selectedOption?.id}
                   key={option.id}
-                  onClick={() => handleSelect(option)}
+                  onClick={() => handleOptionClick(option)}
                   className={clsx(optionClassName)}
                 />
               ))}
