@@ -25,7 +25,10 @@ const Label = ({
 }: LabelProps) => (
   <label
     htmlFor={htmlFor}
-    className={clsx("ui-label ui-text-sm ui-cursor-pointer", className)}
+    className={clsx(
+      "ui-label ui-text-sm ui-cursor-pointer ui-justify-start",
+      className
+    )}
     {...props}
   >
     {children}
