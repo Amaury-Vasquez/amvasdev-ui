@@ -1,6 +1,7 @@
 import clsx, { ClassValue } from "clsx";
 import {
   FocusEvent,
+  FormEvent,
   forwardRef,
   ReactNode,
   useMemo,
@@ -34,6 +35,7 @@ export interface ComboboxProps {
   errorMessage?: string;
   inputVariant?: InputVariant;
   optionClassName?: ClassValue;
+  optionLimit?: number;
 }
 
 const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
@@ -52,6 +54,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       errorMessage,
       inputVariant = "base",
       optionClassName,
+      optionLimit,
     },
     ref
   ) => {
@@ -62,10 +65,13 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       if (!value) return options;
 
       const search = value.toLowerCase();
-      return options.filter((option) =>
+      const possibleOptions = options.filter((option) =>
         option.text.toLowerCase().includes(search)
       );
-    }, [options, value]);
+      return optionLimit
+        ? possibleOptions.slice(0, optionLimit)
+        : possibleOptions;
+    }, [options, value, optionLimit]);
 
     const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
       // Avoids blur being called when clearing search
@@ -90,6 +96,14 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       input.focus();
     };
 
+    const handleChange = (e: FormEvent<HTMLInputElement>) => {
+      const value = e.currentTarget.value;
+      const selectedOption =
+        options.find((option) => option.text === value) ?? null;
+      onSelect(selectedOption);
+      onChange(value);
+    };
+
     return (
       <div className="ui-flex ui-flex-col ui-w-full">
         {label ? (
@@ -101,7 +115,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           <Input
             id={id}
             value={value}
-            onChange={(e) => onChange(e.currentTarget.value)}
+            onChange={handleChange}
             onFocus={() => setIsFocused(true)}
             onBlur={handleBlur}
             required={required}
