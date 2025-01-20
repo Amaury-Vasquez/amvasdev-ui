@@ -1,10 +1,12 @@
 import { CircleCheck, CircleMinus } from "lucide-react";
 import { IComboboxOption } from ".";
 import { useState } from "react";
+import clsx from "clsx";
 
 interface ComboboxOptionProps extends IComboboxOption {
   isSelected: boolean;
   onClick: () => void;
+  className?: string;
 }
 
 export const getComboboxOptionId = (id: string) => `${id}_combobox_option`;
@@ -15,6 +17,8 @@ export const getComboboxOptionId = (id: string) => `${id}_combobox_option`;
  * @param {text} text - The text to display in the option.
  * @param {content} content - The content to display in the option.
  * @param {isSelected} isSelected - Whether the option is selected.
+ * @param {onClick} onClick - The function to call when the option is clicked.
+ * @param {className} className - The class name to apply to the option.
  */
 const ComboboxOption = ({
   id,
@@ -22,6 +26,7 @@ const ComboboxOption = ({
   content,
   isSelected,
   onClick,
+  className,
 }: ComboboxOptionProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -29,7 +34,10 @@ const ComboboxOption = ({
   return (
     <li>
       <button
-        className="ui-p-4 ui-w-full ui-flex ui-items-center ui-justify-between hover:ui-bg-base-200"
+        className={clsx(
+          "ui-p-4 ui-w-full ui-flex ui-items-center ui-justify-between hover:ui-bg-base-200",
+          className
+        )}
         onClick={onClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
