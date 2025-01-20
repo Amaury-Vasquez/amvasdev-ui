@@ -38,3 +38,4 @@ export {
   SelectSize,
   SelectOption,
 } from "./Select";
+export { default as Tooltip, TooltipProps } from "./Tooltip";
