@@ -36,7 +36,29 @@ export interface ComboboxProps {
   inputVariant?: InputVariant;
   optionClassName?: ClassValue;
   optionLimit?: number;
+  closeOptionsText?: string;
+  showCloseOptions?: boolean;
 }
+
+/**
+ * Combobox component
+ * @param {id} id - The id of the combobox.
+ * @param {options} options - The options to display in the combobox.
+ * @param {value} value - The value of the combobox.
+ * @param {onChange} onChange - The function to call when the combobox value changes.
+ * @param {selectedOption} selectedOption - The selected option.
+ * @param {onSelect} onSelect - The function to call when an option is selected.
+ * @param {label} label - The label of the combobox.
+ * @param {required} required - Whether the combobox is required.
+ * @param {size} size - The size of the combobox.
+ * @param {listClassName} listClassName - The class name to apply to the list.
+ * @param {errorMessage} errorMessage - The error message to display.
+ * @param {inputVariant} inputVariant - The variant of the input.
+ * @param {optionClassName} optionClassName - The class name to apply to the options.
+ * @param {optionLimit} optionLimit - The limit of options to display.
+ * @param {closeOptionsText} closeOptionsText - The text to display for closing options.
+ * @param {showCloseOptions} showCloseOptions - Whether to show the close options button.
+ */
 
 const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   (
@@ -55,6 +77,8 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       inputVariant = "base",
       optionClassName,
       optionLimit,
+      closeOptionsText = "Close options",
+      showCloseOptions = true,
     },
     ref
   ) => {
@@ -109,7 +133,9 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     const handleChange = (e: FormEvent<HTMLInputElement>) => {
       const value = e.currentTarget.value;
       const selectedOption =
-        options.find((option) => option.text === value) ?? null;
+        options.find(
+          (option) => option.text.toLowerCase() === value.toLowerCase()
+        ) ?? null;
       onSelect(selectedOption);
       onChange(value);
     };
@@ -144,7 +170,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
               ) : null
             }
           />
-          {isFocused ? (
+          {isFocused && possibleOptions.length > 0 ? (
             <ul
               className={clsx(
                 "ui-w-full ui-flex ui-absolute ui-flex-col ui-top-full ui-z-10",
@@ -162,6 +188,16 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                   className={clsx(optionClassName)}
                 />
               ))}
+              {showCloseOptions ? (
+                <li>
+                  <button
+                    onClick={() => setIsFocused(false)}
+                    className="ui-p-4 ui-w-full ui-flex ui-items-center ui-justify-center ui-text-sm ui-text-accent ui-font-bold hover:ui-bg-base-200"
+                  >
+                    {closeOptionsText}
+                  </button>
+                </li>
+              ) : null}
             </ul>
           ) : null}
         </div>

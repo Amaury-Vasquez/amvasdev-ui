@@ -53,6 +53,8 @@ export const Default: Story = {
     required: true,
     id: "combobox",
     size: "md",
+    showCloseOptions: true,
+    inputVariant: "base",
   },
   render: (args) => <ComboboxStory {...args} />,
 };
