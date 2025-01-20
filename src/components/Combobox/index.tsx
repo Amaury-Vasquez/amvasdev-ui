@@ -158,7 +158,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             size={size}
             ref={ref}
             autoComplete="off"
-            errorMessage={errorMessage}
+            errorMessage={isFocused ? undefined : errorMessage}
             variant={inputVariant}
             rightIcon={
               isFocused && !!value ? (
