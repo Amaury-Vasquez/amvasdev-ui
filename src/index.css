@@ -1,3 +1,55 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.react-calendar {
+  max-width: none;
+  border-radius: 12px;
+  background: oklch(var(--b1));
+  border: 1px solid oklch(var(--b3));
+  padding: 16px;
+}
+
+.react-calendar button:enabled:hover,
+.react-calendar button:enabled:focus {
+  background: oklch(var(--b2));
+  border-radius: 12px;
+}
+
+.react-calendar__navigation__label__labelText {
+  display: inline-block;
+}
+
+.react-calendar__navigation__label__labelText:first-letter {
+  text-transform: capitalize;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: oklch(var(--er));
+}
+
+.react-calendar__tile {
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.react-calendar__tile--active {
+  background: oklch(var(--p));
+}
+
+.react-calendar__tile--active:focus {
+  background: oklch(var(--p)) !important;
+}
+
+.react-calendar__tile--now {
+  background: oklch(var(--a));
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  padding: 16px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
