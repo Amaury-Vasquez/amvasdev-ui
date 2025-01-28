@@ -32,6 +32,7 @@
   border-radius: 8px;
   font-weight: 600;
   font-size: 0.875rem;
+  transition: background 0.2s ease;
 }
 
 .react-calendar__tile--active {
