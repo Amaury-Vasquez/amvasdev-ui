@@ -44,3 +44,4 @@ export {
   ComboboxProps,
   IComboboxOption,
 } from "./Combobox";
+export { default as DateInput, DateInputProps } from "./DateInput";
