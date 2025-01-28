@@ -92,7 +92,7 @@ const DateInput = ({
       </button>
       {isCalendarOpen ? (
         <Calendar
-          className="ui-absolute ui-w-80 !ui-max-w-full"
+          className="ui-absolute ui-w-80 ui-z-30 !ui-max-w-full"
           value={selectedDate}
           // @ts-expect-error onChange type error
           onChange={handleDateChange}
