@@ -44,4 +44,3 @@ export {
   ComboboxProps,
   IComboboxOption,
 } from "./Combobox";
-export { default as Calendar } from "./Calendar";
