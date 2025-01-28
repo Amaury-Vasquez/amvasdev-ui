@@ -1,0 +1,106 @@
+import clsx, { ClassValue } from "clsx";
+import { format, Locale } from "date-fns";
+import { enUS } from "date-fns/locale";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { ReactNode, useRef, useState } from "react";
+import Calendar, { CalendarProps } from "react-calendar";
+import { useOnClickOutside } from "usehooks-ts";
+import ErrorLabel from "../ErrorLabel";
+
+export type DateInputSize = "sm" | "md" | "lg";
+
+export interface DateInputProps
+  extends Omit<CalendarProps, "onChange" | "className"> {
+  selectedDate?: Date;
+  handleDateChange: (date: Date) => void;
+  label?: string;
+  required?: boolean;
+  className?: ClassValue;
+  placeholder?: string;
+  dateLocale?: Locale;
+  size?: DateInputSize;
+  calendarIcon?: ReactNode;
+  showCalendarIcon?: boolean;
+  errorMessage?: string;
+}
+
+const DateInput = ({
+  selectedDate,
+  handleDateChange,
+  label,
+  required,
+  className,
+  placeholder,
+  dateLocale = enUS,
+  size = "md",
+  calendarIcon = <CalendarIcon size="16" />,
+  showCalendarIcon = true,
+  errorMessage,
+  ...props
+}: DateInputProps) => {
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const toggleCalendar = () => setIsCalendarOpen((prev) => !prev);
+
+  useOnClickOutside(ref, () => {
+    if (isCalendarOpen) {
+      setIsCalendarOpen(false);
+    }
+  });
+
+  return (
+    <div className="ui-relative ui-w-full" ref={ref}>
+      <button
+        className={clsx(
+          "ui-flex ui-flex-col ui-bg-transparent ui-w-full",
+          className
+        )}
+        onClick={toggleCalendar}
+        type="button"
+      >
+        {label ? (
+          <span className="ui-text-sm ui-label">
+            {label} {required ? <span className="ui-text-error">*</span> : null}
+          </span>
+        ) : null}
+        <span
+          className={clsx(
+            "ui-text-sm ui-w-full ui-flex ui-justify-between ui-items-center safari-only:max-lg:ui-text-base",
+            "ui-border ui-border-opacity-20 ui-border-base-content ui-rounded-btn ui-bg-base-100",
+            {
+              "ui-h-10 ui-px-3": size === "sm",
+              "ui-h-12 ui-px-4": size === "md",
+              "ui-h-14 ui-px-6 ui-text-lg": size === "lg",
+            },
+            {
+              "ui-text-base-content/50": !selectedDate && placeholder,
+            },
+            size === "lg"
+              ? "safari-only:ui-text-lg"
+              : "safari-only:max-lg:ui-text-base"
+          )}
+        >
+          {selectedDate
+            ? format(selectedDate, "dd/MMMM/yyyy", { locale: dateLocale })
+            : placeholder}
+          {showCalendarIcon ? calendarIcon : null}
+        </span>
+        {errorMessage ? (
+          <ErrorLabel text={errorMessage} className="ui-pt-1 ui-pl-1" />
+        ) : null}
+      </button>
+      {isCalendarOpen ? (
+        <Calendar
+          className="ui-absolute ui-w-80 !ui-max-w-full"
+          value={selectedDate}
+          // @ts-expect-error onChange type error
+          onChange={handleDateChange}
+          {...props}
+        />
+      ) : null}
+    </div>
+  );
+};
+
+export default DateInput;

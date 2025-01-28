@@ -47,5 +47,13 @@ module.exports = {
   daisyui: {
     themes: THEME_LIST,
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"),
+    function ({ addVariant }) {
+      addVariant(
+        "safari-only",
+        "@supports (hanging-punctuation: first) and (font: -apple-system-body) and (-webkit-appearance: none)"
+      );
+    },
+  ],
 };

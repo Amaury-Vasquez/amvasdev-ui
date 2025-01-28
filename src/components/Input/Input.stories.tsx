@@ -13,6 +13,7 @@ const meta: Meta = {
     required: true,
     id: "input",
     label: "Sample Input",
+    placeholder: "Enter text here",
   },
   argTypes: {
     size: { options: INPUT_SIZES, control: "select" },
