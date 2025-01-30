@@ -38,6 +38,7 @@ export interface ComboboxProps {
   optionLimit?: number;
   closeOptionsText?: string;
   showCloseOptions?: boolean;
+  placeholder?: string;
 }
 
 /**
@@ -58,6 +59,7 @@ export interface ComboboxProps {
  * @param {optionLimit} optionLimit - The limit of options to display.
  * @param {closeOptionsText} closeOptionsText - The text to display for closing options.
  * @param {showCloseOptions} showCloseOptions - Whether to show the close options button.
+ * @param {placeholder} placeholder - The placeholder of the combobox.
  */
 
 const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
@@ -79,6 +81,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       optionLimit,
       closeOptionsText = "Close options",
       showCloseOptions = true,
+      placeholder,
     },
     ref
   ) => {
@@ -169,6 +172,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                 />
               ) : null
             }
+            placeholder={placeholder}
           />
           {isFocused && possibleOptions.length > 0 ? (
             <ul
