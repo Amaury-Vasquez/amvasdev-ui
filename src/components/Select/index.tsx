@@ -29,6 +29,7 @@ export interface SelectProps {
   placeholder?: string;
   defaultValue?: SelectOption;
   value?: SelectOption;
+  menuClassName?: ClassValue;
 }
 
 const getSelectSize = (size: SelectSize) => {
@@ -58,6 +59,7 @@ const Select = ({
   options,
   defaultValue,
   required,
+  menuClassName,
 }: SelectProps) => {
   const [isOpen, toggleIsOpen] = useToggle(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -108,7 +110,8 @@ const Select = ({
                 "ui-top-9": size === "sm",
                 "ui-top-[52px]": size === "md",
                 "ui-top-[68px]": size === "lg",
-              }
+              },
+              menuClassName
             )}
           >
             {options.map((option, idx) => (
