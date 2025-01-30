@@ -70,7 +70,8 @@ const DateInput = ({
       >
         {label ? (
           <span className="ui-text-sm ui-label">
-            {label} {required ? <span className="ui-text-error">*</span> : null}
+            {label}{" "}
+            {required ? <span className="ui-text-error ui-ml-1">*</span> : null}
           </span>
         ) : null}
         <span
