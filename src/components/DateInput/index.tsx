@@ -12,7 +12,7 @@ export type DateInputSize = "sm" | "md" | "lg";
 export interface DateInputProps
   extends Omit<CalendarProps, "onChange" | "className"> {
   selectedDate?: Date;
-  handleDateChange: (date: Date) => void;
+  setSelectedDate: (date: Date) => void;
   label?: string;
   required?: boolean;
   className?: ClassValue;
@@ -22,11 +22,13 @@ export interface DateInputProps
   calendarIcon?: ReactNode;
   showCalendarIcon?: boolean;
   errorMessage?: string;
+  matchInputWidth?: boolean;
+  calendarClassName?: ClassValue;
 }
 
 const DateInput = ({
   selectedDate,
-  handleDateChange,
+  setSelectedDate,
   label,
   required,
   className,
@@ -36,12 +38,19 @@ const DateInput = ({
   calendarIcon = <CalendarIcon size="16" />,
   showCalendarIcon = true,
   errorMessage,
+  matchInputWidth = true,
+  calendarClassName,
   ...props
 }: DateInputProps) => {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const toggleCalendar = () => setIsCalendarOpen((prev) => !prev);
+
+  const handleDateChange = (date: Date) => {
+    setSelectedDate(date);
+    setIsCalendarOpen(false);
+  };
 
   useOnClickOutside(ref, () => {
     if (isCalendarOpen) {
@@ -92,7 +101,13 @@ const DateInput = ({
       </button>
       {isCalendarOpen ? (
         <Calendar
-          className="ui-absolute ui-w-80 ui-z-30 !ui-max-w-full"
+          className={clsx(
+            "ui-absolute ui-w-80 ui-z-30",
+            {
+              "!ui-max-w-full": matchInputWidth,
+            },
+            calendarClassName
+          )}
           value={selectedDate}
           // @ts-expect-error onChange type error
           onChange={handleDateChange}

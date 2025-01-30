@@ -9,6 +9,7 @@ const meta: Meta = {
     label: "Date",
     placeholder: "DD/MM/YYYY",
     required: false,
+    matchInputWidth: true,
   },
 };
 
@@ -26,7 +27,7 @@ const DateInputStory = (
       <DateInput
         {...props}
         selectedDate={selectedDate}
-        handleDateChange={setSelectedDate}
+        setSelectedDate={setSelectedDate}
       />
     </div>
   );
