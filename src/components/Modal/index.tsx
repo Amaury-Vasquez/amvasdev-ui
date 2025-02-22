@@ -64,7 +64,7 @@ const Modal = ({
   return (
     <dialog
       className={clsx(
-        "ui-modal ui-pt-12 md:ui-pt-0 ui-bg-black ui-bg-opacity-20 ui-h-svh ui-max-h-svh dark:ui-bg-white",
+        "ui-modal ui-pt-12 md:ui-pt-0 ui-bg-black ui-bg-opacity-20 ui-h-svh ui-max-h-svh dark:ui-bg-white ui-overflow-y-visible",
         {
           "ui-animate-fade-out": isClosing,
           "ui-animate-fade-in": !isClosing,
