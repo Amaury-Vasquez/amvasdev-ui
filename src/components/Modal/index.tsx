@@ -64,7 +64,7 @@ const Modal = ({
   return (
     <dialog
       className={clsx(
-        "ui-modal ui-pt-12 md:ui-pt-0 ui-bg-black ui-bg-opacity-20 ui-h-svh ui-max-h-svh dark:ui-bg-white ui-overflow-y-visible",
+        "ui-modal ui-pt-12 md:ui-pt-0 ui-bg-black ui-bg-opacity-20 ui-h-svh ui-max-h-svh dark:ui-bg-white",
         {
           "ui-animate-fade-out": isClosing,
           "ui-animate-fade-in": !isClosing,
@@ -75,7 +75,7 @@ const Modal = ({
     >
       <div
         className={clsx(
-          "ui-modal-box ui-flex ui-flex-col ui-max-h-full ui-rounded-b-none md:ui-rounded-b-2xl ui-w-full ui-h-full md:ui-h-fit",
+          "ui-modal-box ui-flex ui-flex-col ui-max-h-full ui-rounded-b-none md:ui-rounded-b-2xl ui-w-full ui-h-full ui-overflow-y-visible md:ui-h-fit",
           {
             "ui-animate-to-bottom md:ui-animate-fade-out": isClosing,
             "ui-animate-to-top md:ui-animate-fade-in": !isClosing,
