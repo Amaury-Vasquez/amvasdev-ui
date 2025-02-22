@@ -69,8 +69,8 @@ const DateInput = ({
         type="button"
       >
         {label ? (
-          <span className="ui-text-sm ui-label">
-            {label}{" "}
+          <span className="ui-text-sm ui-label ui-w-fit">
+            {label}
             {required ? <span className="ui-text-error ui-ml-1">*</span> : null}
           </span>
         ) : null}
