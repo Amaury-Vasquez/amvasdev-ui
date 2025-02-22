@@ -44,6 +44,7 @@
 }
 
 .react-calendar__navigation button:disabled {
+  cursor: not-allowed;
   background-color: rgba(oklch(var(--bc)), 0.3);
 }
 
