@@ -1,6 +1,6 @@
 {
   "name": "amvasdev-ui",
-  "version": "0.8.10",
+  "version": "0.8.11",
   "description": "Custom UI components for React",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

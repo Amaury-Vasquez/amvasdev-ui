@@ -75,7 +75,7 @@ const Modal = ({
     >
       <div
         className={clsx(
-          "ui-modal-box ui-flex ui-flex-col ui-max-h-full ui-rounded-b-none md:ui-rounded-b-2xl ui-w-full ui-h-full ui-overflow-y-visible md:ui-h-fit",
+          "ui-modal-box ui-flex ui-flex-col ui-max-h-full ui-rounded-b-none md:ui-rounded-b-2xl ui-w-full ui-h-full ui-overflow-y-scroll md:ui-h-fit",
           {
             "ui-animate-to-bottom md:ui-animate-fade-out": isClosing,
             "ui-animate-to-top md:ui-animate-fade-in": !isClosing,
