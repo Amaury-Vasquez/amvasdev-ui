@@ -1,6 +1,10 @@
 import clsx, { ClassValue } from "clsx";
 import { HTMLProps } from "react";
-import { getButtonClasses } from "../../utilities";
+import {
+  getButtonClasses,
+  LoadingClassesArgs,
+  getLoadingClasses,
+} from "../../utilities";
 
 export type ButtonSize = "xs" | "sm" | "md" | "lg";
 export type ButtonType = "button" | "submit" | "reset";
@@ -17,6 +21,10 @@ export type ButtonVariant =
   | "ghost"
   | "link";
 
+export interface CustomLoading extends LoadingClassesArgs {
+  className?: ClassValue;
+}
+
 export interface ButtonProps
   extends Omit<HTMLProps<HTMLButtonElement>, "className" | "size" | "type"> {
   className?: ClassValue;
@@ -24,7 +32,15 @@ export interface ButtonProps
   size?: ButtonSize;
   variant?: ButtonVariant;
   outlined?: boolean;
+  isLoading?: boolean;
+  loadingStyles?: CustomLoading;
+  disabledOnLoading?: boolean;
 }
+
+export const DEFAULT_LOADING_STYLES: LoadingClassesArgs = {
+  type: "spin",
+  size: "xs",
+};
 
 /**
  * Button component
@@ -33,6 +49,10 @@ export interface ButtonProps
  * @param {size} size - The size of the button. Default: `md`
  * @param {variant} variant - The variant of the button. Default: `base`
  * @param {outlined} outlined - Whether the button should be outlined (no bg color and bordered). Default: `false`
+ * @param {isLoading} isLoading - Whether the button should be in a loading state. Default: `false`
+ * @param {loadingStyles} loadingStyles - The styles to apply to the loading spinner. Default: `{type: "spin", size: "xs", className: undefined}`
+ * @param {disabledOnLoading} disabledOnLoading - Whether the button should be disabled when in a loading state. Default: `true`
+ * @param {disabled} disabled - Whether the button should be disabled. Default: `false`
  */
 const Button = ({
   className,
@@ -40,15 +60,30 @@ const Button = ({
   size = "md",
   variant = "base",
   outlined = false,
+  isLoading = false,
+  loadingStyles = {},
+  disabledOnLoading = true,
   disabled,
   ...props
 }: ButtonProps) => (
   <button
     className={clsx(getButtonClasses({ size, variant, outlined }), className)}
-    disabled={disabled}
+    disabled={disabled || (disabledOnLoading && isLoading)}
     {...props}
   >
     {children}
+    {isLoading ? (
+      <span
+        className={clsx(
+          "ui-loading",
+          getLoadingClasses({
+            type: loadingStyles.type ?? DEFAULT_LOADING_STYLES.type,
+            size: loadingStyles.size ?? DEFAULT_LOADING_STYLES.size,
+          }),
+          loadingStyles.className
+        )}
+      />
+    ) : null}
   </button>
 );
 

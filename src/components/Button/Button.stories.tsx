@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Button from ".";
+import Button, { DEFAULT_LOADING_STYLES } from ".";
 
 const meta: Meta = {
   title: "Components/Button",
@@ -9,6 +9,9 @@ const meta: Meta = {
     variant: "none",
     outlined: false,
     disabled: false,
+    isLoading: false,
+    disabledOnLoading: true,
+    loadingStyles: DEFAULT_LOADING_STYLES,
   },
 };
 
@@ -19,8 +22,7 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   args: {
     variant: "primary",
-    outlined: true
+    outlined: true,
   },
-
-  render: (args) => <Button {...args}>Click me</Button>
+  render: (args) => <Button {...args}>Click me</Button>,
 };
