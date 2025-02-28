@@ -1,3 +1,8 @@
+export {
+  default as ActionModal,
+  ActionModalProps,
+  ActionModalType,
+} from "./ActionModal";
 export { default as Breadcrumbs, BreadcrumbsProps } from "./Breadcrumbs";
 export {
   default as Button,
