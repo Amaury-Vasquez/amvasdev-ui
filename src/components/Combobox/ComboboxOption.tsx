@@ -44,6 +44,7 @@ const ComboboxOption = ({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         id={getComboboxOptionId(id)}
+        type="button"
       >
         {content ?? text}
         {isSelected && (!isHovered || isFocused) ? (
