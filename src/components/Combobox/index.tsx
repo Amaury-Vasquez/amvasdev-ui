@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { useOnClickOutside } from "usehooks-ts";
 import Input, { InputSize, InputVariant } from "../Input";
 import Label from "../Label";
 import ComboboxOption from "./ComboboxOption";
@@ -86,7 +87,8 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     ref
   ) => {
     const [isFocused, setIsFocused] = useState(false);
-    const listRef = useRef<HTMLUListElement>(null);
+    const comboboxRef = useRef<HTMLDivElement>(null);
+    useOnClickOutside(comboboxRef, () => setIsFocused(false));
 
     const possibleOptions = useMemo(() => {
       if (!value) return options;
@@ -107,11 +109,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
 
     const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
       // Avoids blur being called when clearing search
-      if (e.relatedTarget?.id === "clear_search") return;
-      // This is a hack to prevent the input from blurring when clicking on an option.
-      if (!listRef.current?.contains(e.relatedTarget as Node)) {
-        setIsFocused(false);
-      }
+      if (e.relatedTarget?.id === "clear_search") return e.preventDefault();
     };
 
     const handleOptionClick = (option: IComboboxOption) => {
@@ -144,7 +142,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     };
 
     return (
-      <div className="ui-flex ui-flex-col ui-w-full">
+      <div className="ui-flex ui-flex-col ui-w-full" ref={comboboxRef}>
         {label ? (
           <Label required={required} htmlFor={id}>
             {label}
@@ -181,7 +179,6 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                 "ui-shadow-md ui-bg-base-100 ui-transition-colors ui-rounded-lg ui-border ui-border-solid ui-border-base-200",
                 listClassName
               )}
-              ref={listRef}
             >
               {possibleOptions.map((option) => (
                 <ComboboxOption
