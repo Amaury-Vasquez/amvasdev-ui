@@ -142,7 +142,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     };
 
     return (
-      <div className="ui-flex ui-flex-col ui-w-full" ref={comboboxRef}>
+      <div className="ui-flex ui:flex-col ui:w-full" ref={comboboxRef}>
         {label ? (
           <Label required={required} htmlFor={id}>
             {label}
@@ -175,8 +175,8 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           {isFocused && possibleOptions.length > 0 ? (
             <ul
               className={clsx(
-                "ui-w-full ui-flex ui-absolute ui-flex-col ui-top-full ui-z-10",
-                "ui-shadow-md ui-bg-base-100 ui-transition-colors ui-rounded-lg ui-border ui-border-solid ui-border-base-200",
+                "ui:w-full ui:flex ui:absolute ui:flex-col ui:top-full ui:z-10",
+                "ui:shadow-md ui:bg-base-100 ui:transition-colors ui:rounded-lg ui:border ui:border-solid ui:border-base-200",
                 listClassName
               )}
             >
@@ -193,7 +193,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                 <li>
                   <button
                     onClick={() => setIsFocused(false)}
-                    className="ui-p-4 ui-w-full ui-flex ui-items-center ui-justify-center ui-text-sm ui-text-accent ui-font-bold hover:ui-bg-base-200"
+                    className="ui-p-4 ui:w-full ui:flex ui:items-center ui:justify-center ui:text-sm ui:text-accent ui:font-bold ui:hover:bg-base-200"
                   >
                     {closeOptionsText}
                   </button>

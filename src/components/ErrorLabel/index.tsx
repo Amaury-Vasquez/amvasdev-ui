@@ -12,7 +12,7 @@ export interface ErrorLabelProps {
 const ErrorLabel = ({ text, className }: ErrorLabelProps) => (
   <span
     className={clsx(
-      "ui-text-error ui-text-sm ui-font-semibold ui-mt-1",
+      "ui:text-error ui:text-sm ui:font-semibold ui:mt-1",
       className
     )}
   >

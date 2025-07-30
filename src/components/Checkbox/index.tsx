@@ -49,9 +49,9 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => (
-    <div className="ui-flex ui-flex-col ui-w-fit">
+    <div className="ui-flex ui:flex-col ui:w-fit">
       <div
-        className={clsx("ui-flex ui-items-center ui-gap-1", containerClassName)}
+        className={clsx("ui:flex ui:items-center ui:gap-1", containerClassName)}
       >
         {label ? (
           <Label className={labelClassName} htmlFor={id} required={required}>
@@ -60,21 +60,21 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         ) : null}
         <input
           className={clsx(
-            "ui-checkbox",
+            "ui:checkbox",
             {
-              "ui-checkbox-xs": size === "xs",
-              "ui-checkbox-sm": size === "sm",
-              "ui-checkbox-md": size === "md",
-              "ui-checkbox-lg": size === "lg",
+              "ui:checkbox-xs": size === "xs",
+              "ui:checkbox-sm": size === "sm",
+              "ui:checkbox-md": size === "md",
+              "ui:checkbox-lg": size === "lg",
             },
             {
-              "ui-checkbox-primary": variant === "primary",
-              "ui-checkbox-secondary": variant === "secondary",
-              "ui-checkbox-accent": variant === "accent",
-              "ui-checkbox-success": variant === "success",
-              "ui-checkbox-warning": variant === "warning",
-              "ui-checkbox-info": variant === "info",
-              "ui-checkbox-error": variant === "error",
+              "ui:checkbox-primary": variant === "primary",
+              "ui:checkbox-secondary": variant === "secondary",
+              "ui:checkbox-accent": variant === "accent",
+              "ui:checkbox-success": variant === "success",
+              "ui:checkbox-warning": variant === "warning",
+              "ui:checkbox-info": variant === "info",
+              "ui:checkbox-error": variant === "error",
             },
             className
           )}
@@ -86,7 +86,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         />
       </div>
       {errorMessage ? (
-        <ErrorLabel className="ui-text-left ui-pl-1" text={errorMessage} />
+        <ErrorLabel className="ui-text-left ui:pl-1" text={errorMessage} />
       ) : null}
     </div>
   )

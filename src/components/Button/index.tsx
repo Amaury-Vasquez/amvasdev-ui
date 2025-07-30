@@ -75,7 +75,7 @@ const Button = ({
     {isLoading ? (
       <span
         className={clsx(
-          "ui-loading",
+          "ui:loading",
           getLoadingClasses({
             type: loadingStyles.type ?? DEFAULT_LOADING_STYLES.type,
             size: loadingStyles.size ?? DEFAULT_LOADING_STYLES.size,

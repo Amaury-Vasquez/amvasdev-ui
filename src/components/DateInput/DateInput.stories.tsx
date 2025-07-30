@@ -23,7 +23,7 @@ const DateInputStory = (
   const [selectedDate, setSelectedDate] = useState<Date>();
 
   return (
-    <div className="ui-w-full ui-max-w-80">
+    <div className="ui-w-full ui:max-w-80">
       <DateInput
         {...props}
         selectedDate={selectedDate}

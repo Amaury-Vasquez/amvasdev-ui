@@ -26,13 +26,13 @@ const Label = ({
   <label
     htmlFor={htmlFor}
     className={clsx(
-      "ui-label ui-text-sm ui-cursor-pointer ui-justify-start",
+      "ui:label ui:text-sm ui:cursor-pointer ui:justify-start",
       className
     )}
     {...props}
   >
     {children}
-    {required ? <span className="ui-text-error ui-ml-1">*</span> : null}
+    {required ? <span className="ui-text-error ui:ml-1">*</span> : null}
   </label>
 );
 

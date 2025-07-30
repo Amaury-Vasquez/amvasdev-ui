@@ -1,7 +1,8 @@
-import { THEME_LIST } from "./src/themes";
+import { THEME_LIST } from "./src/themes.js";
+import daisyui from "daisyui";
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   prefix: "ui-",
   theme: {
@@ -48,7 +49,7 @@ module.exports = {
     themes: THEME_LIST,
   },
   plugins: [
-    require("daisyui"),
+    daisyui,
     function ({ addVariant }) {
       addVariant(
         "safari-only",
