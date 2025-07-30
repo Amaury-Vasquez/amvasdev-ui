@@ -76,7 +76,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       ) : null}
       <div className="ui-relative ui-w-full">
         {leftIcon ? (
-          <span className="ui-absolute ui-h-full ui-flex ui-items-center ui-px-2 ui-top-0">
+          <span className="ui-absolute ui-h-full ui-flex ui-items-center ui-px-2 ui-top-0 ui-z-50">
             {leftIcon}
           </span>
         ) : null}
@@ -98,7 +98,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {rightIcon ? (
-          <span className="ui-absolute ui-right-0 ui-h-full ui-flex ui-items-center ui-px-2 ui-top-0">
+          <span className="ui-absolute ui-right-0 ui-h-full ui-flex ui-items-center ui-px-2 ui-top-0 ui-z-50">
             {rightIcon}
           </span>
         ) : null}

@@ -77,7 +77,7 @@ const DateInput = ({
         <span
           className={clsx(
             "ui-text-sm ui-w-full ui-flex ui-justify-between ui-items-center safari-only:max-lg:ui-text-base",
-            "ui-border ui-border-opacity-20 ui-border-base-content ui-rounded-btn ui-bg-base-100 ui-capitalize",
+            "ui-border ui-border-opacity-20 ui-border-base-content ui-rounded-field ui-bg-base-100 ui-capitalize",
             {
               "ui-h-10 ui-px-3": size === "sm",
               "ui-h-12 ui-px-4": size === "md",

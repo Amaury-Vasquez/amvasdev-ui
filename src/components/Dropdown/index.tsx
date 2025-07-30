@@ -51,7 +51,7 @@ const Dropdown = ({
       <button
         className={clsx(
           {
-            "ui-btn ui-btn-ghost ui-font-normal ui-flex ui-items-center ui-gap-2 ui-outline-none focus-visible:ui-border-2 focus-visible:ui-border-primary focus-visible:ui-border-solid":
+            "ui-btn ui-btn-ghost ui-font-normal ui-flex ui-items-center ui-gap-2 focus-visible:ui-border-2 focus-visible:ui-border-primary focus-visible:ui-border-solid":
               !unstyledTrigger,
           },
           triggerClassName
