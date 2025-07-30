@@ -1,4 +1,4 @@
-import type { Preview, ReactRenderer } from "@storybook/react";
+import type { Preview, ReactRenderer } from "@storybook/react-vite";
 import "react-calendar/dist/Calendar.css";
 import "../src/index.css";
 import { THEME_LIST } from "../src/themes";

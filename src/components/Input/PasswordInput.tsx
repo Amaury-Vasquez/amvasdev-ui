@@ -1,6 +1,6 @@
 import { Eye, EyeOff } from "lucide-react";
 import { forwardRef } from "react";
-import { useToggle } from "usehooks-ts";
+import { useToggle } from "../../hooks";
 import Input, { InputProps } from ".";
 
 interface PasswordInputProps extends Omit<InputProps, "type"> {}

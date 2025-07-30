@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import Button, { DEFAULT_LOADING_STYLES } from ".";
 
 const meta: Meta = {

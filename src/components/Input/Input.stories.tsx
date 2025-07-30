@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Search } from "lucide-react";
 import Input, { INPUT_VARIANTS, INPUT_SIZES } from ".";
 import PasswordInput from "./PasswordInput";

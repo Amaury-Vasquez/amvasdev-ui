@@ -1,5 +1,6 @@
 import { RefObject, useState } from "react";
-import { useEventListener, useOnClickOutside } from "usehooks-ts";
+import useEventListener from "./useEventListener";
+import useOnClickOutside from "./useOnClickOutside";
 
 interface ClosableContainerArgs {
   closeTimeout?: number;
@@ -24,7 +25,7 @@ const DEFAULT_ARGS = {
 };
 
 const useClosableContainer = <T extends HTMLElement>(
-  ref: RefObject<T>,
+  ref: RefObject<T | null>,
   onClose: () => void,
   args?: ClosableContainerArgs
 ) => {

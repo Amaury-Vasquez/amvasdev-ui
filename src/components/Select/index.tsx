@@ -1,6 +1,6 @@
 import clsx, { ClassValue } from "clsx";
 import { useRef } from "react";
-import { useOnClickOutside, useToggle } from "usehooks-ts";
+import { useOnClickOutside, useToggle } from "../../hooks";
 import ErrorLabel from "../ErrorLabel";
 
 export const SELECT_SIZES = ["xs", "sm", "md", "lg"] as const;

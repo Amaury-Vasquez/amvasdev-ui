@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { useToggle } from "usehooks-ts";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useToggle } from "../../hooks";
 import Button from "../Button";
 import Modal, { ModalProps } from ".";
 

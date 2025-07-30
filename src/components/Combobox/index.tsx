@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useOnClickOutside } from "usehooks-ts";
+import { useOnClickOutside } from "../../hooks";
 import Input, { InputSize, InputVariant } from "../Input";
 import Label from "../Label";
 import ComboboxOption from "./ComboboxOption";

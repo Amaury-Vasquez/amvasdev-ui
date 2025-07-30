@@ -4,7 +4,7 @@ import { enUS } from "date-fns/locale";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { ReactNode, useRef, useState } from "react";
 import Calendar, { CalendarProps } from "react-calendar";
-import { useOnClickOutside } from "usehooks-ts";
+import { useOnClickOutside } from "../../hooks";
 import ErrorLabel from "../ErrorLabel";
 
 export type DateInputSize = "sm" | "md" | "lg";
