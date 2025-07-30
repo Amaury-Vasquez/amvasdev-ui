@@ -49,7 +49,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => (
-    <div className="ui-flex ui:flex-col ui:w-fit">
+    <div className="ui:flex ui:flex-col ui:w-fit">
       <div
         className={clsx("ui:flex ui:items-center ui:gap-1", containerClassName)}
       >
@@ -86,7 +86,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         />
       </div>
       {errorMessage ? (
-        <ErrorLabel className="ui-text-left ui:pl-1" text={errorMessage} />
+        <ErrorLabel className="ui:text-left ui:pl-1" text={errorMessage} />
       ) : null}
     </div>
   )

@@ -16,7 +16,7 @@ const PasswordIcon = ({
 }: PasswordIconProps) => (
   <button
     type="button"
-    className="ui-bg-transparent"
+    className="ui:bg-transparent"
     onClick={toggleShowPassword}
   >
     {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}

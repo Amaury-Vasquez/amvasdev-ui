@@ -82,7 +82,7 @@ const Select = ({
           )}
         >
           {label}
-          {required ? <span className="ui-text-error ui:ml-1">*</span> : null}
+          {required ? <span className="ui:text-error ui:ml-1">*</span> : null}
         </label>
       ) : null}
       <div className={clsx("ui:relative ui:w-fit", selectClassName)} ref={ref}>
@@ -91,7 +91,7 @@ const Select = ({
             "ui:select ui:items-center",
             getSelectSize(size),
             {
-              "ui-select-bordered": bordered,
+              "ui:select-bordered": bordered,
             },
             className
           )}
@@ -143,7 +143,7 @@ const Select = ({
         ) : null}
       </div>
       {errorMessage ? (
-        <ErrorLabel text={errorMessage} className="ui-pt-1 ui:pl-1" />
+        <ErrorLabel text={errorMessage} className="ui:pt-1 ui:pl-1" />
       ) : null}
     </div>
   );

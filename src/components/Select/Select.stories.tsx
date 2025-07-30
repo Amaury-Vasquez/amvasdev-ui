@@ -35,7 +35,7 @@ const SelectStory = (args: SelectProps) => {
   const [value, setValue] = useState<SelectOption>();
 
   return (
-    <Select {...args} value={value} onChange={setValue} className="ui-w-80" />
+    <Select {...args} value={value} onChange={setValue} className="ui:w-80" />
   );
 };
 

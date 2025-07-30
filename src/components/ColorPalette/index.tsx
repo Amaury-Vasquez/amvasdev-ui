@@ -47,7 +47,7 @@ const ColorPalette = ({
     data-theme={theme}
     {...props}
   >
-    {isSelected ? <BadgeCheck size={20} className="ui-text-primary" /> : null}
+    {isSelected ? <BadgeCheck size={20} className="ui:text-primary" /> : null}
     {showThemeLabel ? (
       <span className={clsx("ui:text-base ui:capitalize", labelClassName)}>
         {themeLabel ?? theme}

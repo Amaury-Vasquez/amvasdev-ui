@@ -142,13 +142,13 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     };
 
     return (
-      <div className="ui-flex ui:flex-col ui:w-full" ref={comboboxRef}>
+      <div className="ui:flex ui:flex-col ui:w-full" ref={comboboxRef}>
         {label ? (
           <Label required={required} htmlFor={id}>
             {label}
           </Label>
         ) : null}
-        <div className="ui-relative">
+        <div className="ui:relative">
           <Input
             id={id}
             value={value}

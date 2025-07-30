@@ -59,7 +59,7 @@ const DateInput = ({
   });
 
   return (
-    <div className="ui-relative ui:w-full" ref={ref}>
+    <div className="ui:relative ui:w-full" ref={ref}>
       <button
         className={clsx(
           "ui:flex ui:flex-col ui:bg-transparent ui:w-full",
@@ -69,15 +69,15 @@ const DateInput = ({
         type="button"
       >
         {label ? (
-          <span className="ui-text-sm ui:label ui:w-fit">
+          <span className="ui:text-sm ui:label ui:w-fit">
             {label}
-            {required ? <span className="ui-text-error ui:ml-1">*</span> : null}
+            {required ? <span className="ui:text-error ui:ml-1">*</span> : null}
           </span>
         ) : null}
         <span
           className={clsx(
             "ui:text-sm ui:w-full ui:flex ui:justify-between ui:items-center ui:safari-only:max-lg:text-base",
-            "ui:border ui-border-opacity-20 ui:border-base-content ui:rounded-field ui:bg-base-100 ui:capitalize",
+            "ui:border ui:border-opacity-20 ui:border-base-content ui:rounded-field ui:bg-base-100 ui:capitalize",
             {
               "ui:h-10 ui:px-3": size === "sm",
               "ui:h-12 ui:px-4": size === "md",
@@ -97,7 +97,7 @@ const DateInput = ({
           {showCalendarIcon ? calendarIcon : null}
         </span>
         {errorMessage ? (
-          <ErrorLabel text={errorMessage} className="ui-pt-1 ui:pl-1" />
+          <ErrorLabel text={errorMessage} className="ui:pt-1 ui:pl-1" />
         ) : null}
       </button>
       {isCalendarOpen ? (

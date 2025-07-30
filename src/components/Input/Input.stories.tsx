@@ -33,7 +33,7 @@ export const Default: Story = {
   },
 
   render: (args) => (
-    <div className="ui-max-w-80">
+    <div className="ui:max-w-80">
       <Input {...args} />
     </div>
   ),
@@ -41,8 +41,8 @@ export const Default: Story = {
 
 export const WithLeftIcon: Story = {
   render: (args) => (
-    <div className="ui-max-w-80">
-      <Input {...args} leftIcon={<Search className="ui-w-4" />} />
+    <div className="ui:max-w-80">
+      <Input {...args} leftIcon={<Search className="ui:w-4" />} />
     </div>
   ),
   args: {
@@ -52,8 +52,8 @@ export const WithLeftIcon: Story = {
 
 export const WithRightIcon: Story = {
   render: (args) => (
-    <div className="ui-max-w-80">
-      <Input {...args} rightIcon={<Search className="ui-w-4" />} />
+    <div className="ui:max-w-80">
+      <Input {...args} rightIcon={<Search className="ui:w-4" />} />
     </div>
   ),
   args: {
@@ -63,11 +63,11 @@ export const WithRightIcon: Story = {
 
 export const WithBothIcons: Story = {
   render: (args) => (
-    <div className="ui-max-w-80">
+    <div className="ui:max-w-80">
       <Input
         {...args}
-        leftIcon={<Search className="ui-w-4" />}
-        rightIcon={<Search className="ui-w-4" />}
+        leftIcon={<Search className="ui:w-4" />}
+        rightIcon={<Search className="ui:w-4" />}
       />
     </div>
   ),
@@ -79,7 +79,7 @@ export const WithBothIcons: Story = {
 
 export const Password: Story = {
   render: (args) => (
-    <div className="ui-max-w-80">
+    <div className="ui:max-w-80">
       <PasswordInput {...args} />
     </div>
   ),

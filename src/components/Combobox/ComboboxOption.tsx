@@ -48,10 +48,10 @@ const ComboboxOption = ({
       >
         {content ?? text}
         {isSelected && (!isHovered || isFocused) ? (
-          <CircleCheck size="20" className="ui-text-success" />
+          <CircleCheck size="20" className="ui:text-success" />
         ) : null}
         {isSelected && isHovered && !isFocused ? (
-          <CircleMinus size="20" className="ui-text-error" />
+          <CircleMinus size="20" className="ui:text-error" />
         ) : null}
       </button>
     </li>

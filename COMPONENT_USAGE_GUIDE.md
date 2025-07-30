@@ -43,8 +43,8 @@ import { Button } from "amvasdev-ui";
 
 // Loading state
 <Button isLoading>Loading...</Button>
-<Button 
-  isLoading 
+<Button
+  isLoading
   loadingStyles={{ type: "dots", size: "sm" }}
   disabledOnLoading={false}
 >
@@ -73,16 +73,16 @@ import { Search, User } from "lucide-react";
 <Input id="username" label="Username" />
 
 // With icons
-<Input 
-  id="search" 
-  label="Search" 
+<Input
+  id="search"
+  label="Search"
   leftIcon={<Search size={16} />}
   placeholder="Search..."
 />
 
-<Input 
-  id="profile" 
-  label="Profile" 
+<Input
+  id="profile"
+  label="Profile"
   rightIcon={<User size={16} />}
 />
 
@@ -94,8 +94,8 @@ import { Search, User } from "lucide-react";
 <Input id="required" label="Required Field" required />
 
 // Custom styling
-<Input 
-  id="custom" 
+<Input
+  id="custom"
   className="custom-input-class"
   labelClassName="custom-label-class"
 />
@@ -110,11 +110,11 @@ import { Search, User } from "lucide-react";
 ```jsx
 import { PasswordInput } from "amvasdev-ui";
 
-<PasswordInput 
-  id="password" 
-  label="Password" 
+<PasswordInput
+  id="password"
+  label="Password"
   placeholder="Enter your password"
-/>
+/>;
 ```
 
 ### Modal
@@ -131,7 +131,7 @@ function App() {
   return (
     <>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-      
+
       {isOpen && (
         <Modal
           onClose={() => setIsOpen(false)}
@@ -153,18 +153,18 @@ function App() {
   title="Delete Item"
   cancelButton={{
     children: "Cancel",
-    variant: "ghost"
+    variant: "ghost",
   }}
   confirmButton={{
     children: "Delete",
     variant: "error",
-    onClick: () => console.log("Deleted!")
+    onClick: () => console.log("Deleted!"),
   }}
   closeOnCancel={true}
   closeOnConfirm={true}
 >
   <p>This action cannot be undone.</p>
-</Modal>
+</Modal>;
 ```
 
 ### Combobox
@@ -183,7 +183,7 @@ function App() {
     { id: "1", text: "Apple" },
     { id: "2", text: "Banana" },
     { id: "3", text: "Cherry" },
-    { id: "4", text: "Date" }
+    { id: "4", text: "Date" },
   ];
 
   return (
@@ -204,11 +204,15 @@ function App() {
 
 // With custom option content
 const optionsWithContent = [
-  { 
-    id: "1", 
-    text: "Apple", 
-    content: <div><strong>Apple</strong> - Red fruit</div> 
-  }
+  {
+    id: "1",
+    text: "Apple",
+    content: (
+      <div>
+        <strong>Apple</strong> - Red fruit
+      </div>
+    ),
+  },
 ];
 ```
 
@@ -219,15 +223,10 @@ import { Select } from "amvasdev-ui";
 
 const options = [
   { value: "option1", label: "Option 1" },
-  { value: "option2", label: "Option 2" }
+  { value: "option2", label: "Option 2" },
 ];
 
-<Select 
-  id="select"
-  label="Choose an option"
-  options={options}
-  size="md"
-/>
+<Select id="select" label="Choose an option" options={options} size="md" />;
 ```
 
 ### RadioGroup
@@ -237,7 +236,7 @@ import { RadioGroup } from "amvasdev-ui";
 
 const options = [
   { value: "yes", label: "Yes" },
-  { value: "no", label: "No" }
+  { value: "no", label: "No" },
 ];
 
 <RadioGroup
@@ -246,7 +245,7 @@ const options = [
   orientation="horizontal"
   size="md"
   variant="primary"
-/>
+/>;
 ```
 
 ### Checkbox
@@ -254,11 +253,7 @@ const options = [
 ```jsx
 import { Checkbox } from "amvasdev-ui";
 
-<Checkbox 
-  id="terms"
-  label="I agree to the terms and conditions"
-  required
-/>
+<Checkbox id="terms" label="I agree to the terms and conditions" required />;
 ```
 
 ### DateInput
@@ -270,7 +265,7 @@ import { DateInput } from "amvasdev-ui";
   id="birthdate"
   label="Birth Date"
   onChange={(date) => console.log(date)}
-/>
+/>;
 ```
 
 ### Tooltip
@@ -280,7 +275,7 @@ import { Tooltip } from "amvasdev-ui";
 
 <Tooltip content="This is a helpful tooltip">
   <Button>Hover me</Button>
-</Tooltip>
+</Tooltip>;
 ```
 
 ### Dropdown
@@ -288,14 +283,17 @@ import { Tooltip } from "amvasdev-ui";
 ```jsx
 import { Dropdown } from "amvasdev-ui";
 
-<Dropdown
-  trigger={<Button>Menu</Button>}
-  position="bottom-start"
->
-  <li><a>Profile</a></li>
-  <li><a>Settings</a></li>
-  <li><a>Logout</a></li>
-</Dropdown>
+<Dropdown trigger={<Button>Menu</Button>} position="bottom-start">
+  <li>
+    <a>Profile</a>
+  </li>
+  <li>
+    <a>Settings</a>
+  </li>
+  <li>
+    <a>Logout</a>
+  </li>
+</Dropdown>;
 ```
 
 ### Breadcrumbs
@@ -306,10 +304,10 @@ import { Breadcrumbs } from "amvasdev-ui";
 const items = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
-  { label: "Current Page" }
+  { label: "Current Page" },
 ];
 
-<Breadcrumbs items={items} />
+<Breadcrumbs items={items} />;
 ```
 
 ### ActionModal
@@ -322,7 +320,7 @@ import { ActionModal } from "amvasdev-ui";
   title="Success!"
   message="Your action was completed successfully."
   onClose={() => setIsOpen(false)}
-/>
+/>;
 ```
 
 ### ColorPalette
@@ -333,7 +331,7 @@ import { ColorPalette } from "amvasdev-ui";
 <ColorPalette
   colors={["#ff0000", "#00ff00", "#0000ff"]}
   onColorSelect={(color) => console.log(color)}
-/>
+/>;
 ```
 
 ### IconButton
@@ -342,10 +340,10 @@ import { ColorPalette } from "amvasdev-ui";
 import { IconButton } from "amvasdev-ui";
 import { Settings } from "lucide-react";
 
-<IconButton 
+<IconButton
   icon={<Settings size={16} />}
   onClick={() => console.log("Settings clicked")}
-/>
+/>;
 ```
 
 ## Hooks
@@ -363,11 +361,11 @@ function MyModal({ onClose }) {
   const { isClosing, handleClose } = useClosableContainer(ref, onClose, {
     closeTimeout: 300,
     closeOnEsc: true,
-    closeOnClickOutside: true
+    closeOnClickOutside: true,
   });
 
   return (
-    <div 
+    <div
       ref={ref}
       className={isClosing ? "animate-fade-out" : "animate-fade-in"}
     >
@@ -379,6 +377,7 @@ function MyModal({ onClose }) {
 ```
 
 **Options:**
+
 - `closeTimeout` - Animation duration before calling onClose (default: 280ms)
 - `closeOnEsc` - Close when Escape key is pressed (default: true)
 - `closeOnClickOutside` - Close when clicking outside (default: true)
@@ -426,16 +425,20 @@ function MyComponent() {
   const buttonRef = useRef(null);
 
   // Listen to window events
-  useEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      console.log('Escape key pressed');
+  useEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      console.log("Escape key pressed");
     }
   });
 
   // Listen to element events
-  useEventListener('click', (event) => {
-    console.log('Button clicked');
-  }, buttonRef);
+  useEventListener(
+    "click",
+    (event) => {
+      console.log("Button clicked");
+    },
+    buttonRef
+  );
 
   return <button ref={buttonRef}>Click me</button>;
 }
@@ -479,11 +482,9 @@ function ToggleExample() {
 
   return (
     <div>
-      <button onClick={toggleVisibility}>
-        {isVisible ? 'Hide' : 'Show'}
-      </button>
+      <button onClick={toggleVisibility}>{isVisible ? "Hide" : "Show"}</button>
       <button onClick={toggleEnabled}>
-        {isEnabled ? 'Disable' : 'Enable'}
+        {isEnabled ? "Disable" : "Enable"}
       </button>
     </div>
   );
@@ -504,8 +505,8 @@ function ResponsiveComponent() {
   useIsomorphicLayoutEffect(() => {
     const updateWidth = () => setWidth(window.innerWidth);
     updateWidth();
-    window.addEventListener('resize', updateWidth);
-    return () => window.removeEventListener('resize', updateWidth);
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
   return <div>Width: {width}px</div>;
@@ -523,7 +524,7 @@ import { getButtonClasses, getButtonVariant, getButtonSize } from "amvasdev-ui";
 const buttonClasses = getButtonClasses({
   variant: "primary",
   size: "lg",
-  outlined: true
+  outlined: true,
 });
 
 // Get only variant classes
@@ -542,7 +543,7 @@ import { getInputClasses, getInputVariant, getInputSize } from "amvasdev-ui";
 const inputClasses = getInputClasses({
   variant: "primary",
   size: "md",
-  bordered: true
+  bordered: true,
 });
 
 // Get only variant classes
@@ -560,11 +561,11 @@ import { getLoadingClasses } from "amvasdev-ui";
 // Get loading spinner classes
 const loadingClasses = getLoadingClasses({
   type: "spin",
-  size: "md"
+  size: "md",
 });
 
 // Use in custom component
-<span className={`loading ${loadingClasses}`} />
+<span className={`loading ${loadingClasses}`} />;
 ```
 
 **Loading types:** `spin`, `dots`, `ring`, `ball`, `bars`, `infinity`
@@ -579,13 +580,13 @@ The library includes 14 predefined daisyUI themes:
 import { THEME_LIST } from "amvasdev-ui";
 
 console.log(THEME_LIST);
-// ["emerald", "dracula", "winter", "night", "light", "halloween", 
+// ["emerald", "dracula", "winter", "night", "light", "halloween",
 //  "autumn", "business", "nord", "dim", "lemonade", "sunset", "valentine"]
 ```
 
 ## Styling Notes
 
-- All components use the `ui-` prefix for TailwindCSS classes to prevent conflicts
+- All components use the `ui:` prefix for TailwindCSS classes to prevent conflicts
 - Components are built with daisyUI styling system
 - Custom animations are available: `fade-in`, `fade-out`, `to-top`, `to-bottom`, `scale-up`, `scale-down`
 - Safari-specific styling variant `safari-only:` is available for browser-specific fixes
@@ -596,13 +597,13 @@ console.log(THEME_LIST);
 All components are fully typed with TypeScript. Import types as needed:
 
 ```tsx
-import { 
-  ButtonProps, 
-  InputProps, 
-  ModalProps, 
+import {
+  ButtonProps,
+  InputProps,
+  ModalProps,
   ComboboxProps,
   IComboboxOption,
   ButtonVariant,
-  InputSize
+  InputSize,
 } from "amvasdev-ui";
 ```

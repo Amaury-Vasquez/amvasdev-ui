@@ -37,7 +37,7 @@ export function getInputClasses({ variant, size, bordered }: InputClassParams) {
     getInputVariant(variant),
     getInputSize(size),
     {
-      "ui-input-bordered": bordered,
+      "ui:input-bordered": bordered,
     }
   );
 }

@@ -26,7 +26,7 @@ const ModalStory = (args: ModalProps) => {
       <Button onClick={() => toggleIsOpen()}>Open Modal</Button>
       {isOpen ? (
         <Modal {...args} onClose={() => toggleIsOpen()}>
-          <div className="ui-w-full ui:py-4">
+          <div className="ui:w-full ui:py-4">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates
             aliquid iste odio neque dignissimos. Id corporis dicta laborum, modi
             eligendi voluptates, distinctio autem ullam ut est asperiores
@@ -62,7 +62,7 @@ const ModalWithButtonsStory = (args: ModalProps) => {
             onClick: () => console.log("Confirm"),
           }}
         >
-          <div className="ui-w-full ui:py-4">
+          <div className="ui:w-full ui:py-4">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates
             aliquid iste odio neque dignissimos. Id corporis dicta laborum, modi
             eligendi voluptates, distinctio autem ullam ut est asperiores

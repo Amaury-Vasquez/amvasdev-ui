@@ -92,7 +92,7 @@ const RadioGroup = ({
       )}
     >
       {options.map((option) => (
-        <div key={option.id} className="ui-flex ui:items-center ui:gap-2">
+        <div key={option.id} className="ui:flex ui:items-center ui:gap-2">
           <Label className={labelClassName} htmlFor={option.id}>
             {option.label ?? option.name}
           </Label>

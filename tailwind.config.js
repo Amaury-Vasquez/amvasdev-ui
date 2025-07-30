@@ -1,4 +1,4 @@
-import { THEME_LIST } from "./src/themes.js";
+import { THEME_LIST } from "./src/themes.ts";
 import daisyui from "daisyui";
 
 /** @type {import('tailwindcss').Config} */

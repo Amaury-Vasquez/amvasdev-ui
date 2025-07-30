@@ -34,7 +34,7 @@ const ComboboxStory = (args: ComboboxProps) => {
   >(null);
 
   return (
-    <div className="ui-w-80">
+    <div className="ui:w-80">
       <Combobox
         {...args}
         value={value}

@@ -32,7 +32,7 @@ const Label = ({
     {...props}
   >
     {children}
-    {required ? <span className="ui-text-error ui:ml-1">*</span> : null}
+    {required ? <span className="ui:text-error ui:ml-1">*</span> : null}
   </label>
 );
 

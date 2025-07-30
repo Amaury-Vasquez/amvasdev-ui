@@ -64,7 +64,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => (
-    <div className="ui-flex ui:flex-col ui:w-full">
+    <div className="ui:flex ui:flex-col ui:w-full">
       {label ? (
         <Label
           htmlFor={id}
@@ -74,9 +74,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {label}
         </Label>
       ) : null}
-      <div className="ui-relative ui:w-full">
+      <div className="ui:relative ui:w-full">
         {leftIcon ? (
-          <span className="ui-absolute ui:h-full ui:flex ui:items-center ui:px-2 ui:top-0 ui:z-50">
+          <span className="ui:absolute ui:h-full ui:flex ui:items-center ui:px-2 ui:top-0 ui:z-50">
             {leftIcon}
           </span>
         ) : null}
@@ -98,13 +98,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {rightIcon ? (
-          <span className="ui-absolute ui:right-0 ui:h-full ui:flex ui:items-center ui:px-2 ui:top-0 ui:z-50">
+          <span className="ui:absolute ui:right-0 ui:h-full ui:flex ui:items-center ui:px-2 ui:top-0 ui:z-50">
             {rightIcon}
           </span>
         ) : null}
       </div>
       {errorMessage ? (
-        <ErrorLabel text={errorMessage} className="ui-pt-1 ui:pl-1" />
+        <ErrorLabel text={errorMessage} className="ui:pt-1 ui:pl-1" />
       ) : null}
     </div>
   )

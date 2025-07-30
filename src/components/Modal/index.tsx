@@ -64,7 +64,7 @@ const Modal = ({
   return (
     <dialog
       className={clsx(
-        "ui:modal ui:pt-12 ui:md:pt-0 ui:bg-black ui-bg-opacity-20 ui:h-svh ui:max-h-svh ui:dark:bg-white",
+        "ui:modal ui:pt-12 ui:md:pt-0 ui:bg-black ui:bg-opacity-20 ui:h-svh ui:max-h-svh ui:dark:bg-white",
         {
           "ui:animate-fade-out": isClosing,
           "ui:animate-fade-in": !isClosing,
@@ -95,7 +95,7 @@ const Modal = ({
           >
             {title &&
               (typeof title === "string" ? (
-                <span className="ui-text-xl ui:font-semibold ui:w-full ui:text-center">
+                <span className="ui:text-xl ui:font-semibold ui:w-full ui:text-center">
                   {title}
                 </span>
               ) : (
@@ -103,13 +103,13 @@ const Modal = ({
               ))}
             {showCloseButton ? (
               <IconButton
-                icon={<AiOutlineClose className="ui-text-xl" />}
+                icon={<AiOutlineClose className="ui:text-xl" />}
                 onClick={handleClose}
               />
             ) : null}
           </div>
         ) : null}
-        <div className="ui-h-full">{children}</div>
+        <div className="ui:h-full">{children}</div>
         {showFooter ? (
           <div
             className={clsx(
