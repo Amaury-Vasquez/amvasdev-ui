@@ -35,7 +35,7 @@ const ComboboxOption = ({
     <li>
       <button
         className={clsx(
-          "ui:p-4 ui:w-full ui:flex ui:items-center ui:justify-between ui:hover:bg-base-200",
+          "ui:p-4 ui:w-full ui:flex ui:items-center ui:justify-between ui:hover:bg-base-200 ui:cursor-pointer",
           className
         )}
         onClick={onClick}

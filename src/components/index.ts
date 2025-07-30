@@ -49,4 +49,5 @@ export {
   ComboboxProps,
   IComboboxOption,
 } from "./Combobox";
+export { default as Calendar, CalendarProps } from "./Calendar";
 export { default as DateInput, DateInputProps } from "./DateInput";

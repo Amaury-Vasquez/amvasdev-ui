@@ -3,16 +3,16 @@ import { format, Locale } from "date-fns";
 import { enUS } from "date-fns/locale";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { ReactNode, useRef, useState } from "react";
-import Calendar, { CalendarProps } from "react-calendar";
 import { useOnClickOutside } from "../../hooks";
+import Calendar, { CalendarProps } from "../Calendar";
 import ErrorLabel from "../ErrorLabel";
 
 export type DateInputSize = "sm" | "md" | "lg";
 
 export interface DateInputProps
-  extends Omit<CalendarProps, "onChange" | "className"> {
+  extends Omit<CalendarProps, "onDateChange" | "className"> {
   selectedDate?: Date;
-  setSelectedDate: (date: Date) => void;
+  setSelectedDate: (date: Date | undefined) => void;
   label?: string;
   required?: boolean;
   className?: ClassValue;
@@ -40,14 +40,17 @@ const DateInput = ({
   errorMessage,
   matchInputWidth = true,
   calendarClassName,
-  ...props
+  disabled,
+  fromDate,
+  toDate,
+  showOutsideDays,
 }: DateInputProps) => {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const toggleCalendar = () => setIsCalendarOpen((prev) => !prev);
 
-  const handleDateChange = (date: Date) => {
+  const handleDateChange = (date: Date | undefined) => {
     setSelectedDate(date);
     setIsCalendarOpen(false);
   };
@@ -59,7 +62,7 @@ const DateInput = ({
   });
 
   return (
-    <div className="ui:relative ui:w-full" ref={ref}>
+    <div className="ui:relative ui:w-full ui:min-w-80" ref={ref}>
       <button
         className={clsx(
           "ui:flex ui:flex-col ui:bg-transparent ui:w-full",
@@ -103,16 +106,18 @@ const DateInput = ({
       {isCalendarOpen ? (
         <Calendar
           className={clsx(
-            "ui:absolute ui:w-80 ui:z-30",
+            "ui:absolute ui:min-w-80 ui:z-30",
             {
-              "ui:max-w-full!": matchInputWidth,
+              "ui:max-w-full": matchInputWidth,
             },
             calendarClassName
           )}
-          value={selectedDate}
-          // @ts-expect-error onChange type error
-          onChange={handleDateChange}
-          {...props}
+          selectedDate={selectedDate}
+          onDateChange={handleDateChange}
+          disabled={disabled}
+          fromDate={fromDate}
+          toDate={toDate}
+          showOutsideDays={showOutsideDays}
         />
       ) : null}
     </div>

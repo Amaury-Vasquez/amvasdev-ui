@@ -216,6 +216,131 @@ const optionsWithContent = [
 ];
 ```
 
+### Calendar
+
+The Calendar component provides a date picker interface using react-day-picker with daisyUI styling.
+
+```jsx
+import { Calendar } from "amvasdev-ui";
+import { useState } from "react";
+
+function App() {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  return (
+    <Calendar
+      selectedDate={selectedDate}
+      onDateChange={setSelectedDate}
+    />
+  );
+}
+
+// With date range
+<Calendar
+  selectedDate={selectedDate}
+  onDateChange={setSelectedDate}
+  fromDate={new Date(2024, 0, 1)} // January 1, 2024
+  toDate={new Date(2024, 11, 31)} // December 31, 2024
+/>
+
+// Custom styling
+<Calendar
+  selectedDate={selectedDate}
+  onDateChange={setSelectedDate}
+  className="ui:w-96 ui:shadow-xl"
+/>
+```
+
+**Calendar Props:**
+- `selectedDate?: Date` - Currently selected date
+- `onDateChange?: (date: Date | undefined) => void` - Callback when date is selected
+- `fromDate?: Date` - Minimum selectable date
+- `toDate?: Date` - Maximum selectable date
+- `disabled?: any` - Disabled dates (Date, Date[], or range objects)
+- `showOutsideDays?: boolean` - Show days from previous/next months
+- `className?: ClassValue` - Additional CSS classes
+
+### DateInput
+
+The DateInput component provides a form input with integrated calendar picker functionality.
+
+```jsx
+import { DateInput } from "amvasdev-ui";
+import { useState } from "react";
+
+function App() {
+  const [selectedDate, setSelectedDate] = useState();
+
+  return (
+    <DateInput
+      selectedDate={selectedDate}
+      setSelectedDate={setSelectedDate}
+      label="Birth Date"
+      placeholder="Select your birth date"
+    />
+  );
+}
+
+// With validation
+<DateInput
+  selectedDate={selectedDate}
+  setSelectedDate={setSelectedDate}
+  label="Event Date"
+  required
+  errorMessage="Please select a date"
+/>
+
+// Different sizes
+<DateInput size="sm" />
+<DateInput size="md" /> {/* default */}
+<DateInput size="lg" />
+
+// With date constraints
+<DateInput
+  selectedDate={selectedDate}
+  setSelectedDate={setSelectedDate}
+  label="Appointment Date"
+  fromDate={new Date()} // Today onwards
+  toDate={new Date(2024, 11, 31)} // Until end of 2024
+/>
+
+// Custom formatting and locale
+import { es } from "date-fns/locale";
+
+<DateInput
+  selectedDate={selectedDate}
+  setSelectedDate={setSelectedDate}
+  dateLocale={es} // Spanish locale
+  placeholder="Selecciona una fecha"
+/>
+
+// Without calendar icon
+<DateInput
+  selectedDate={selectedDate}
+  setSelectedDate={setSelectedDate}
+  showCalendarIcon={false}
+/>
+```
+
+**DateInput Props:**
+- `selectedDate?: Date` - Currently selected date
+- `setSelectedDate: (date: Date | undefined) => void` - Function to update selected date
+- `label?: string` - Input label text
+- `required?: boolean` - Mark field as required
+- `placeholder?: string` - Placeholder text when no date selected
+- `dateLocale?: Locale` - date-fns locale for formatting (default: enUS)
+- `size?: "sm" | "md" | "lg"` - Input size (default: "md")
+- `calendarIcon?: ReactNode` - Custom calendar icon
+- `showCalendarIcon?: boolean` - Show/hide calendar icon (default: true)
+- `errorMessage?: string` - Error message to display
+- `matchInputWidth?: boolean` - Match calendar width to input (default: true)
+- `calendarClassName?: ClassValue` - Additional CSS classes for calendar
+- `fromDate?: Date` - Minimum selectable date
+- `toDate?: Date` - Maximum selectable date
+- `disabled?: any` - Disabled dates (Date, Date[], or range objects)
+- `showOutsideDays?: boolean` - Show days from previous/next months
+- `className?: ClassValue` - Additional CSS classes for container
+
 ### Select
 
 ```jsx

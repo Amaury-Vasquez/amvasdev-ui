@@ -193,7 +193,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                 <li>
                   <button
                     onClick={() => setIsFocused(false)}
-                    className="ui-p-4 ui:w-full ui:flex ui:items-center ui:justify-center ui:text-sm ui:text-accent ui:font-bold ui:hover:bg-base-200"
+                    className="ui:p-4 ui:w-full ui:flex ui:items-center ui:justify-center ui:text-sm ui:text-accent ui:font-bold ui:hover:bg-base-200 ui:cursor-pointer"
                   >
                     {closeOptionsText}
                   </button>
