@@ -28,11 +28,8 @@ This is **amvasdev-ui**, a React component library built with TypeScript that pr
 
 ### Styling System
 
-- **TailwindCSS** with `ui:` prefix for all classes to avoid conflicts when consumed
 - **daisyUI** plugin provides component styling and theming
-- Custom animations defined in `tailwind.config.js` for fade, scale, and slide transitions
-- Safari-specific variant (`safari-only`) available for browser-specific styling
-- Theme system with 14 predefined themes exported from `src/themes.ts`
+- Custom animations defined in `src/index.css` using @keyframes and @utility directives
 
 ### Component Architecture
 

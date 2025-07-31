@@ -79,7 +79,7 @@ const DateInput = ({
         ) : null}
         <span
           className={clsx(
-            "ui:text-sm ui:w-full ui:flex ui:justify-between ui:items-center ui:safari-only:max-lg:text-base",
+            "ui:text-sm ui:w-full ui:flex ui:justify-between ui:items-center",
             "ui:border ui:border-opacity-20 ui:border-base-content ui:rounded-field ui:bg-base-100 ui:capitalize",
             {
               "ui:h-10 ui:px-3": size === "sm",
@@ -88,10 +88,7 @@ const DateInput = ({
             },
             {
               "ui:text-base-content/50": !selectedDate && placeholder,
-            },
-            size === "lg"
-              ? "ui:safari-only:text-lg"
-              : "ui:safari-only:max-lg:text-base"
+            }
           )}
         >
           {selectedDate

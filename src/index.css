@@ -25,3 +25,86 @@
 button {
   cursor: pointer;
 }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+    filter: blur(5px);
+  }
+}
+
+@keyframes to-top {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes to-bottom {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes scale-up {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes scale-down {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@utility animate-fade-in {
+  animation: fade-in 0.3s ease-in-out;
+}
+
+@utility animate-fade-out {
+  animation: fade-out 0.3s ease-in-out;
+}
+
+@utility animate-to-top {
+  animation: to-top 0.3s ease-out;
+}
+
+@utility animate-to-bottom {
+  animation: to-bottom 0.3s ease-out;
+}
+
+@utility animate-scale-up {
+  animation: scale-up 0.2s ease-out;
+}
+
+@utility animate-scale-down {
+  animation: scale-down 0.2s ease-out;
+}

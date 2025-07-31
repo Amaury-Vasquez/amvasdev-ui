@@ -32,12 +32,7 @@ interface InputClassParams {
 }
 
 export function getInputClasses({ variant, size, bordered }: InputClassParams) {
-  return clsx(
-    "ui:input ui:safari-only:text-base",
-    getInputVariant(variant),
-    getInputSize(size),
-    {
-      "ui:input-bordered": bordered,
-    }
-  );
+  return clsx("ui:input", getInputVariant(variant), getInputSize(size), {
+    "ui:input-bordered": bordered,
+  });
 }
