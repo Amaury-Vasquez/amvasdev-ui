@@ -26,3 +26,9 @@ const App = () => {
   );
 };
 ```
+
+## Claude Components Usage Guidance
+
+For detailed component documentation and usage examples with Claude Code:
+
+📥 [Download Claude Components Guide](https://raw.githubusercontent.com/amauryvasquez/amvasdev-ui/main/claude-components-guide.md)
