@@ -1,6 +1,7 @@
 import clsx, { ClassValue } from "clsx";
 import { HTMLProps, ReactNode, useState } from "react";
 import Tooltip from "../Tooltip";
+import { getIconButtonClasses } from "../../utilities";
 
 export interface IconButtonProps
   extends Omit<HTMLProps<HTMLButtonElement>, "className" | "size" | "type"> {
@@ -31,10 +32,7 @@ const IconButton = ({
 
   return (
     <button
-      className={clsx(
-        "ui:relative ui:btn-ghost ui:rounded-full ui:w-fit ui:p-2 ui:transition-colors ui:flex ui:items-center ui:justify-center ui:hover:bg-base-200",
-        className
-      )}
+      className={clsx(getIconButtonClasses(), className)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={onMouseLeave}
       onFocus={() => setIsFocused(true)}
