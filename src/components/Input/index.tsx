@@ -64,19 +64,19 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => (
-    <div className="ui-flex ui-flex-col ui-w-full">
+    <div className="ui:flex ui:flex-col ui:w-full">
       {label ? (
         <Label
           htmlFor={id}
           required={required}
-          className={clsx("ui-pl-1 ui-justify-start", labelClassName)}
+          className={clsx("ui:pl-1 ui:justify-start", labelClassName)}
         >
           {label}
         </Label>
       ) : null}
-      <div className="ui-relative ui-w-full">
+      <div className="ui:relative ui:w-full">
         {leftIcon ? (
-          <span className="ui-absolute ui-h-full ui-flex ui-items-center ui-px-2 ui-top-0">
+          <span className="ui:absolute ui:h-full ui:flex ui:items-center ui:px-2 ui:top-0 ui:z-50">
             {leftIcon}
           </span>
         ) : null}
@@ -87,24 +87,24 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           required={required}
           type={type}
           className={clsx(
-            "ui-w-full",
+            "ui:w-full",
             getInputClasses({ variant, size, bordered }),
             {
-              "ui-pl-8": leftIcon,
-              "ui-pr-8": rightIcon,
+              "ui:pl-8": leftIcon,
+              "ui:pr-8": rightIcon,
             },
             className
           )}
           {...props}
         />
         {rightIcon ? (
-          <span className="ui-absolute ui-right-0 ui-h-full ui-flex ui-items-center ui-px-2 ui-top-0">
+          <span className="ui:absolute ui:right-0 ui:h-full ui:flex ui:items-center ui:px-2 ui:top-0 ui:z-50">
             {rightIcon}
           </span>
         ) : null}
       </div>
       {errorMessage ? (
-        <ErrorLabel text={errorMessage} className="ui-pt-1 ui-pl-1" />
+        <ErrorLabel text={errorMessage} className="ui:pt-1 ui:pl-1" />
       ) : null}
     </div>
   )

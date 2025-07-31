@@ -9,24 +9,24 @@ interface ButtonClassParams {
 
 export function getButtonVariant(variant: ButtonVariant) {
   return clsx({
-    "ui-btn-primary": variant === "primary",
-    "ui-btn-secondary": variant === "secondary",
-    "ui-btn-accent": variant === "accent",
-    "ui-btn-success": variant === "success",
-    "ui-btn-info": variant === "info",
-    "ui-btn-warning": variant === "warning",
-    "ui-btn-error": variant === "error",
-    "ui-btn-ghost": variant === "ghost",
-    "ui-btn-link": variant === "link",
+    "ui:btn-primary": variant === "primary",
+    "ui:btn-secondary": variant === "secondary",
+    "ui:btn-accent": variant === "accent",
+    "ui:btn-success": variant === "success",
+    "ui:btn-info": variant === "info",
+    "ui:btn-warning": variant === "warning",
+    "ui:btn-error": variant === "error",
+    "ui:btn-ghost": variant === "ghost",
+    "ui:btn-link": variant === "link",
   });
 }
 
 export function getButtonSize(size: ButtonSize) {
   return clsx({
-    "ui-btn-xs": size === "xs",
-    "ui-btn-sm": size === "sm",
-    "ui-btn-md": size === "md",
-    "ui-btn-lg": size === "lg",
+    "ui:btn-xs": size === "xs",
+    "ui:btn-sm": size === "sm",
+    "ui:btn-md": size === "md",
+    "ui:btn-lg": size === "lg",
   });
 }
 
@@ -36,7 +36,7 @@ export function getButtonClasses({
   size = "md",
   outlined,
 }: ButtonClassParams) {
-  return clsx("ui-btn", getButtonVariant(variant), getButtonSize(size), {
-    "ui-btn-outline": outlined,
+  return clsx("ui:btn", getButtonVariant(variant), getButtonSize(size), {
+    "ui:btn-outline": outlined,
   });
 }

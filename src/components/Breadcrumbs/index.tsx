@@ -20,7 +20,7 @@ const Breadcrumbs = ({
   ...props
 }: BreadcrumbsProps) => (
   <div
-    className={clsx("ui-breadcrumbs ui-text-sm", className)}
+    className={clsx("ui:breadcrumbs ui:text-sm", className)}
     id={id}
     {...props}
   >

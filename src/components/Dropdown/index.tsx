@@ -47,11 +47,11 @@ const Dropdown = ({
   };
 
   return (
-    <div className={clsx("ui-relative ui-w-fit", className)}>
+    <div className={clsx("ui:relative ui:w-fit", className)}>
       <button
         className={clsx(
           {
-            "ui-btn ui-btn-ghost ui-font-normal ui-flex ui-items-center ui-gap-2 ui-outline-none focus-visible:ui-border-2 focus-visible:ui-border-primary focus-visible:ui-border-solid":
+            "ui:btn ui:btn-ghost ui:font-normal ui:flex ui:items-center ui:gap-2 ui:focus-visible:border-2 ui:focus-visible:border-primary ui:focus-visible:border-solid":
               !unstyledTrigger,
           },
           triggerClassName
@@ -61,9 +61,9 @@ const Dropdown = ({
         {triggerElement}
         {showChevron ? (
           <FaChevronDown
-            className={clsx("ui-text-sm ui-transition-transform", {
-              "ui-rotate-180": isOpen,
-              "ui-rotate-0": !isOpen,
+            className={clsx("ui:text-sm ui:transition-transform", {
+              "ui:rotate-180": isOpen,
+              "ui:rotate-0": !isOpen,
             })}
           />
         ) : null}

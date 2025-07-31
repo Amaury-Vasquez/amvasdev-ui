@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import Select, { SelectProps, SELECT_SIZES, SelectOption } from ".";
 import { useState } from "react";
 
@@ -35,7 +35,7 @@ const SelectStory = (args: SelectProps) => {
   const [value, setValue] = useState<SelectOption>();
 
   return (
-    <Select {...args} value={value} onChange={setValue} className="ui-w-80" />
+    <Select {...args} value={value} onChange={setValue} className="ui:w-80" />
   );
 };
 

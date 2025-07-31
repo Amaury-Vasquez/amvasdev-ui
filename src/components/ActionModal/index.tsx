@@ -50,21 +50,21 @@ const ActionModal = ({
   onCancel,
 }: ActionModalProps) => (
   <Modal title={modalTitle} onClose={closeModal} showCloseButton={showClose}>
-    <div className="ui-w-full ui-flex ui-flex-col ui-gap-4">
+    <div className="ui:w-full ui:flex ui:flex-col ui:gap-4">
       <span
-        className={clsx("ui-text-lg ui-font-bold ui-text-center ui-mt-4", {
-          "ui-text-warning": type === "warning",
-          "ui-text-success": type === "success",
-          "ui-text-error": type === "error",
+        className={clsx("ui:text-lg ui:font-bold ui:text-center ui:mt-4", {
+          "ui:text-warning": type === "warning",
+          "ui:text-success": type === "success",
+          "ui:text-error": type === "error",
         })}
       >
         {title}
       </span>
-      <span className="ui-text-center ui-mb-4">{description}</span>
-      <div className="ui-grid ui-grid-cols-2 ui-items-center ui-w-full ui-gap-4">
+      <span className="ui:text-center ui:mb-4">{description}</span>
+      <div className="ui:grid ui:grid-cols-2 ui:items-center ui:w-full ui:gap-4">
         <Button
           onClick={onConfirm}
-          className="ui-w-full"
+          className="ui:w-full"
           variant={type}
           isLoading={isPending}
         >
@@ -73,7 +73,7 @@ const ActionModal = ({
         {showCancelButton ? (
           <Button
             onClick={onCancel ?? closeModal}
-            className="ui-w-full"
+            className="ui:w-full"
             disabled={isPending}
           >
             {cancelButtonText}

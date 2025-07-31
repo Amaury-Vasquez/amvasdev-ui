@@ -3,11 +3,11 @@ import { HTMLProps } from "react";
 import { BadgeCheck } from "lucide-react";
 
 const COLORS = [
-  "ui-bg-primary",
-  "ui-bg-secondary",
-  "ui-bg-accent",
-  "ui-bg-neutral",
-  "ui-bg-success",
+  "ui:bg-primary",
+  "ui:bg-secondary",
+  "ui:bg-accent",
+  "ui:bg-neutral",
+  "ui:bg-success",
 ];
 
 export interface ColorPaletteProps
@@ -41,21 +41,21 @@ const ColorPalette = ({
 }: Readonly<ColorPaletteProps>) => (
   <div
     className={clsx(
-      "ui-flex ui-items-center ui-bg-base-200 ui-px-4 ui-py-2 ui-justify-between ui-shadow-md ui-p-2 ui-rounded-lg ui-border ui-border-solid ui-border-base-200 ui-gap-2",
+      "ui:flex ui:items-center ui:bg-base-200 ui:px-4 ui:py-2 ui:justify-between ui:shadow-md ui:p-2 ui:rounded-lg ui:border ui:border-solid ui:border-base-200 ui:gap-2",
       className
     )}
     data-theme={theme}
     {...props}
   >
-    {isSelected ? <BadgeCheck size={20} className="ui-text-primary" /> : null}
+    {isSelected ? <BadgeCheck size={20} className="ui:text-primary" /> : null}
     {showThemeLabel ? (
-      <span className={clsx("ui-text-base ui-capitalize", labelClassName)}>
+      <span className={clsx("ui:text-base ui:capitalize", labelClassName)}>
         {themeLabel ?? theme}
       </span>
     ) : null}
     {COLORS.map((color) => (
       <span
-        className={clsx("ui-w-4 ui-h-4 ui-rounded-full", color)}
+        className={clsx("ui:w-4 ui:h-4 ui:rounded-full", color)}
         key={color}
       />
     ))}

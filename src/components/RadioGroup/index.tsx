@@ -44,22 +44,22 @@ export interface RadioGroupProps {
 
 const getRadioGroupVariant = (variant: RadioGroupVariant) => {
   return clsx({
-    "ui-radio-primary": variant === "primary",
-    "ui-radio-secondary": variant === "secondary",
-    "ui-radio-accent": variant === "accent",
-    "ui-radio-success": variant === "success",
-    "ui-radio-warning": variant === "warning",
-    "ui-radio-info": variant === "info",
-    "ui-radio-error": variant === "error",
+    "ui:radio-primary": variant === "primary",
+    "ui:radio-secondary": variant === "secondary",
+    "ui:radio-accent": variant === "accent",
+    "ui:radio-success": variant === "success",
+    "ui:radio-warning": variant === "warning",
+    "ui:radio-info": variant === "info",
+    "ui:radio-error": variant === "error",
   });
 };
 
 const getRadioGroupSize = (size: RadioGroupSize) => {
   return clsx({
-    "ui-radio-xs": size === "xs",
-    "ui-radio-sm": size === "sm",
-    "ui-radio-md": size === "md",
-    "ui-radio-lg": size === "lg",
+    "ui:radio-xs": size === "xs",
+    "ui:radio-sm": size === "sm",
+    "ui:radio-md": size === "md",
+    "ui:radio-lg": size === "lg",
   });
 };
 
@@ -86,13 +86,13 @@ const RadioGroup = ({
   return (
     <div
       className={clsx(
-        "ui-flex ui-gap-4",
-        orientation === "vertical" ? "ui-flex-col" : "ui-flex-row",
+        "ui:flex ui:gap-4",
+        orientation === "vertical" ? "ui:flex-col" : "ui:flex-row",
         className
       )}
     >
       {options.map((option) => (
-        <div key={option.id} className="ui-flex ui-items-center ui-gap-2">
+        <div key={option.id} className="ui:flex ui:items-center ui:gap-2">
           <Label className={labelClassName} htmlFor={option.id}>
             {option.label ?? option.name}
           </Label>
@@ -101,7 +101,7 @@ const RadioGroup = ({
             name={id}
             type="radio"
             className={clsx(
-              "ui-radio",
+              "ui:radio",
               getRadioGroupVariant(variant),
               getRadioGroupSize(size)
             )}

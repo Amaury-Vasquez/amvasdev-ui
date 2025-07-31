@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import Combobox, { ComboboxProps, IComboboxOption } from ".";
 import { useState } from "react";
 
@@ -34,7 +34,7 @@ const ComboboxStory = (args: ComboboxProps) => {
   >(null);
 
   return (
-    <div className="ui-w-80">
+    <div className="ui:w-80">
       <Combobox
         {...args}
         value={value}

@@ -64,10 +64,10 @@ const Modal = ({
   return (
     <dialog
       className={clsx(
-        "ui-modal ui-pt-12 md:ui-pt-0 ui-bg-black ui-bg-opacity-20 ui-h-svh ui-max-h-svh dark:ui-bg-white",
+        "ui:modal ui:pt-12 ui:md:pt-0 ui:bg-black ui:bg-opacity-20 ui:h-svh ui:max-h-svh ui:dark:bg-white",
         {
-          "ui-animate-fade-out": isClosing,
-          "ui-animate-fade-in": !isClosing,
+          "ui:animate-fade-out": isClosing,
+          "ui:animate-fade-in": !isClosing,
         }
       )}
       open
@@ -75,10 +75,10 @@ const Modal = ({
     >
       <div
         className={clsx(
-          "ui-modal-box ui-flex ui-flex-col ui-max-h-full ui-rounded-b-none md:ui-rounded-b-2xl ui-w-full ui-h-full ui-overflow-y-scroll md:ui-overflow-y-visible md:ui-h-fit",
+          "ui:modal-box ui:flex ui:flex-col ui:max-h-full ui:rounded-b-none ui:md:rounded-b-2xl ui:w-full ui:h-full ui:overflow-y-scroll ui:md:overflow-y-visible ui:md:h-fit",
           {
-            "ui-animate-to-bottom md:ui-animate-fade-out": isClosing,
-            "ui-animate-to-top md:ui-animate-fade-in": !isClosing,
+            "ui:animate-to-bottom ui:md:animate-fade-out": isClosing,
+            "ui:animate-to-top ui:md:animate-fade-in": !isClosing,
           },
 
           className
@@ -87,15 +87,15 @@ const Modal = ({
       >
         {showHeader ? (
           <div
-            className={clsx("ui-flex ui-w-full ui-items-center", {
-              "ui-justify-between": title && showCloseButton,
-              "ui-justify-end": !title && showCloseButton,
-              "ui-justify-start": title && !showCloseButton,
+            className={clsx("ui:flex ui:w-full ui:items-center", {
+              "ui:justify-between": title && showCloseButton,
+              "ui:justify-end": !title && showCloseButton,
+              "ui:justify-start": title && !showCloseButton,
             })}
           >
             {title &&
               (typeof title === "string" ? (
-                <span className="ui-text-xl ui-font-semibold ui-w-full ui-text-center">
+                <span className="ui:text-xl ui:font-semibold ui:w-full ui:text-center">
                   {title}
                 </span>
               ) : (
@@ -103,19 +103,19 @@ const Modal = ({
               ))}
             {showCloseButton ? (
               <IconButton
-                icon={<AiOutlineClose className="ui-text-xl" />}
+                icon={<AiOutlineClose className="ui:text-xl" />}
                 onClick={handleClose}
               />
             ) : null}
           </div>
         ) : null}
-        <div className="ui-h-full">{children}</div>
+        <div className="ui:h-full">{children}</div>
         {showFooter ? (
           <div
             className={clsx(
-              "ui-w-full ui-grid",
+              "ui:w-full ui:grid",
               {
-                "ui-grid sm:ui-grid-cols-2 ui-grid-cols-1 ui-gap-4":
+                "ui:grid ui:sm:grid-cols-2 ui:grid-cols-1 ui:gap-4":
                   cancelButton && confirmButton,
               },
               btnContainerClass
@@ -124,7 +124,7 @@ const Modal = ({
             {cancelButton && (
               <Button
                 {...cancelButton}
-                className={clsx("ui-w-full", cancelButton.className)}
+                className={clsx("ui:w-full", cancelButton.className)}
                 onClick={(e) => {
                   if (cancelButton.onClick) {
                     if (closeOnCancel) {
@@ -140,7 +140,7 @@ const Modal = ({
             {confirmButton && (
               <Button
                 {...confirmButton}
-                className={clsx("ui-w-full", confirmButton.className)}
+                className={clsx("ui:w-full", confirmButton.className)}
                 onClick={(e) => {
                   if (confirmButton.onClick) {
                     if (closeOnConfirm) {

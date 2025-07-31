@@ -35,7 +35,7 @@ const ComboboxOption = ({
     <li>
       <button
         className={clsx(
-          "ui-p-4 ui-w-full ui-flex ui-items-center ui-justify-between hover:ui-bg-base-200",
+          "ui:p-4 ui:w-full ui:flex ui:items-center ui:justify-between ui:hover:bg-base-200 ui:cursor-pointer",
           className
         )}
         onClick={onClick}
@@ -48,10 +48,10 @@ const ComboboxOption = ({
       >
         {content ?? text}
         {isSelected && (!isHovered || isFocused) ? (
-          <CircleCheck size="20" className="ui-text-success" />
+          <CircleCheck size="20" className="ui:text-success" />
         ) : null}
         {isSelected && isHovered && !isFocused ? (
-          <CircleMinus size="20" className="ui-text-error" />
+          <CircleMinus size="20" className="ui:text-error" />
         ) : null}
       </button>
     </li>
