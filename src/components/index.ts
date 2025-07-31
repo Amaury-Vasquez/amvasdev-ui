@@ -51,3 +51,8 @@ export {
 } from "./Combobox";
 export { default as Calendar, CalendarProps } from "./Calendar";
 export { default as DateInput, DateInputProps } from "./DateInput";
+export {
+  default as HamburgerMenu,
+  HamburgerMenuProps,
+  HamburgerMenuPosition,
+} from "./HamburgerMenu";

@@ -24,14 +24,19 @@ const IconButton = ({
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
+  const onMouseLeave = () => {
+    setIsHovered(false);
+    setIsFocused(false);
+  };
+
   return (
     <button
       className={clsx(
-        "ui:relative ui:btn-ghost ui:rounded-full ui:w-fit ui:p-2 ui:transition-colors ui:flex ui:items-center ui:justify-center",
+        "ui:relative ui:btn-ghost ui:rounded-full ui:w-fit ui:p-2 ui:transition-colors ui:flex ui:items-center ui:justify-center ui:hover:bg-base-200",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={onMouseLeave}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       {...props}
