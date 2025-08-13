@@ -31,4 +31,4 @@ const App = () => {
 
 For detailed component documentation and usage examples with Claude Code:
 
-📥 [Download Claude Components Guide](https://raw.githubusercontent.com/amauryvasquez/amvasdev-ui/main/claude-components-guide.md)
+📥 [Download Claude Components Guide](https://github.com/Amaury-Vasquez/amvasdev-ui/blob/main/COMPONENT_USAGE_GUIDE.md)

@@ -36,7 +36,12 @@ export function getButtonClasses({
   size = "md",
   outlined,
 }: ButtonClassParams) {
-  return clsx("ui:btn", getButtonVariant(variant), getButtonSize(size), {
-    "ui:btn-outline": outlined,
-  });
+  return clsx(
+    "ui:btn ui:rounded-field",
+    getButtonVariant(variant),
+    getButtonSize(size),
+    {
+      "ui:btn-outline": outlined,
+    }
+  );
 }
