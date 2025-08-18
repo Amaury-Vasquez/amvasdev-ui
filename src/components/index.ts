@@ -56,3 +56,10 @@ export {
   HamburgerMenuProps,
   HamburgerMenuPosition,
 } from "./HamburgerMenu";
+export {
+  default as Badge,
+  BadgeProps,
+  BadgeVariant,
+  BadgeSize,
+  BadgeBorderType,
+} from "./Badge";
