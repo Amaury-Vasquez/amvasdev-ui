@@ -24,6 +24,7 @@ export interface InputProps
   extends Omit<HTMLProps<HTMLInputElement>, "size" | "className"> {
   bordered?: boolean;
   className?: ClassValue;
+  containerClassName?: ClassValue;
   labelClassName?: ClassValue;
   size?: InputSize;
   variant?: InputVariant;
@@ -38,6 +39,7 @@ export interface InputProps
 /**
  * Input component
  * @param {className} className - The className to apply to the input.
+ * @param {containerClassName} containerClassName - The className to apply to the container.
  * @param {label} label - The label to display for the input.
  * @param {required} required - Whether the input is required. Default: `false`
  * @param {id} id - The id of the input.
@@ -52,6 +54,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       id,
       variant = "base",
       size = "md",
+      containerClassName,
       label,
       bordered = true,
       required,
@@ -64,7 +67,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => (
-    <div className="ui:flex ui:flex-col ui:w-full">
+    <div className={clsx("ui:flex ui:flex-col ui:w-full", containerClassName)}>
       {label ? (
         <Label
           htmlFor={id}
