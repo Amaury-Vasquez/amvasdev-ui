@@ -776,14 +776,15 @@ import { ColorPalette } from "amvasdev-ui";
 />
 
 // Complete theme selector example
-import { THEME_LIST } from "amvasdev-ui";
-
 function ThemeSelector() {
   const [selectedTheme, setSelectedTheme] = useState("light");
 
+  // You can use any daisyUI theme
+  const themes = ["light", "dark", "cupcake", "emerald", "dracula"];
+
   return (
     <div className="ui:flex ui:flex-col ui:gap-2">
-      {THEME_LIST.map((theme) => (
+      {themes.map((theme) => (
         <ColorPalette
           key={theme}
           theme={theme}
@@ -1237,17 +1238,11 @@ The `getIconButtonClasses()` function returns the default styling for icon butto
 
 ## Theme System
 
-The library includes 13 predefined daisyUI themes that you can use throughout your application:
+The library supports all daisyUI themes through the `useThemeChange` hook:
 
 ```jsx
-import { THEME_LIST } from "amvasdev-ui";
-
-console.log(THEME_LIST);
-// ["emerald", "dracula", "winter", "night", "light", "halloween",
-//  "autumn", "business", "nord", "dim", "lemonade", "sunset", "valentine"]
-
-// Use with ColorPalette for theme selection
 import { ColorPalette, useThemeChange } from "amvasdev-ui";
+import { useState } from "react";
 
 function ThemeSelector() {
   const { changeTheme } = useThemeChange();
@@ -1258,9 +1253,20 @@ function ThemeSelector() {
     setCurrentTheme(theme);
   };
 
+  // You can use any daisyUI theme
+  const themes = [
+    "light", "dark", "cupcake", "bumblebee", "emerald",
+    "corporate", "synthwave", "retro", "cyberpunk", "valentine",
+    "halloween", "garden", "forest", "aqua", "lofi",
+    "pastel", "fantasy", "wireframe", "black", "luxury",
+    "dracula", "cmyk", "autumn", "business", "acid",
+    "lemonade", "night", "coffee", "winter", "dim",
+    "nord", "sunset"
+  ];
+
   return (
     <div className="ui:flex ui:flex-col ui:gap-2">
-      {THEME_LIST.map((theme) => (
+      {themes.map((theme) => (
         <ColorPalette
           key={theme}
           theme={theme}
@@ -1273,6 +1279,8 @@ function ThemeSelector() {
   );
 }
 ```
+
+See all available daisyUI themes at: https://daisyui.com/docs/themes/
 
 ## Styling Notes
 

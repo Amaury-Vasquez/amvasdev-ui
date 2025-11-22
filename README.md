@@ -8,7 +8,7 @@ A comprehensive React component library built with TypeScript, styled with [dais
 ## Features
 
 ✨ **18+ React Components** - Buttons, inputs, modals, dropdowns, calendars, and more
-🎨 **13 Built-in Themes** - Powered by daisyUI's theming system
+🎨 **Full Theme Support** - Use any daisyUI theme with built-in theme switching
 📘 **Full TypeScript Support** - Complete type definitions for all components
 🎯 **TailwindCSS Integration** - Custom `ui:` prefix to prevent style conflicts
 ♿ **Accessible** - Built with accessibility in mind
@@ -88,17 +88,28 @@ function App() {
 
 ## Theming
 
-Choose from 13 built-in daisyUI themes:
+Use any daisyUI theme with the `useThemeChange` hook:
 
 ```jsx
-import { useThemeChange, THEME_LIST } from "amvasdev-ui";
+import { useThemeChange } from "amvasdev-ui";
 
 function ThemeSelector() {
   const { changeTheme } = useThemeChange();
 
+  // You can use any daisyUI theme
+  const themes = [
+    "light", "dark", "cupcake", "bumblebee", "emerald",
+    "corporate", "synthwave", "retro", "cyberpunk", "valentine",
+    "halloween", "garden", "forest", "aqua", "lofi",
+    "pastel", "fantasy", "wireframe", "black", "luxury",
+    "dracula", "cmyk", "autumn", "business", "acid",
+    "lemonade", "night", "coffee", "winter", "dim",
+    "nord", "sunset"
+  ];
+
   return (
     <select onChange={(e) => changeTheme(e.target.value)}>
-      {THEME_LIST.map((theme) => (
+      {themes.map((theme) => (
         <option key={theme} value={theme}>
           {theme}
         </option>
@@ -108,7 +119,7 @@ function ThemeSelector() {
 }
 ```
 
-**Available themes:** emerald, dracula, winter, night, light, halloween, autumn, business, nord, dim, lemonade, sunset, valentine
+See all available themes at [daisyUI themes](https://daisyui.com/docs/themes/)
 
 ## Documentation
 
