@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import ColorPalette from ".";
-import { THEME_LIST } from "../../themes";
+import { THEMES } from "../../constants/themes";
 
 const meta: Meta = {
   title: "Components/Color Palette",
@@ -12,7 +12,7 @@ const meta: Meta = {
   },
   argTypes: {
     theme: {
-      options: THEME_LIST,
+      options: THEMES,
       control: { type: "radio" },
     },
   },
@@ -37,7 +37,7 @@ export const AllThemes: Story = {
 
   render: () => (
     <div className="ui:w-full ui:flex ui:flex-col ui:gap-4 ui:max-w-80">
-      {THEME_LIST.map((theme) => (
+      {THEMES.map((theme) => (
         <ColorPalette key={theme} theme={theme} />
       ))}
     </div>

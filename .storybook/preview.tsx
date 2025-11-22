@@ -1,7 +1,7 @@
 import type { Preview, ReactRenderer } from "@storybook/react-vite";
 import "../src/index.css";
-import { THEME_LIST } from "../src/themes";
 import { withThemeByDataAttribute } from "@storybook/addon-themes";
+import { THEMES } from "../src/constants/themes";
 
 const preview: Preview = {
   parameters: {
@@ -14,7 +14,7 @@ const preview: Preview = {
   },
   decorators: [
     withThemeByDataAttribute<ReactRenderer>({
-      themes: THEME_LIST.reduce(
+      themes: THEMES.reduce(
         (acc, theme) => Object.assign(acc, { [theme]: theme }),
         {}
       ),
