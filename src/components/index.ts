@@ -43,7 +43,7 @@ export {
   SelectSize,
   SelectOption,
 } from "./Select";
-export { default as Tooltip, TooltipProps } from "./Tooltip";
+export { default as Tooltip, TooltipPosition, TooltipProps } from "./Tooltip";
 export {
   default as Combobox,
   ComboboxProps,

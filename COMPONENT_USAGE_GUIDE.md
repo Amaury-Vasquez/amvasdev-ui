@@ -865,26 +865,47 @@ import { Settings, Trash, Edit } from "lucide-react";
   onClick={() => console.log("Settings clicked")}
 />
 
-// With tooltip
+// With simple tooltip
 <IconButton
   icon={<Edit size={18} />}
   tooltip="Edit item"
   onClick={handleEdit}
 />
 
-// With custom tooltip content
+// With tooltip positioning
 <IconButton
   icon={<Trash size={18} />}
-  tooltip={
-    <div className="ui:flex ui:flex-col">
-      <span className="ui:font-bold">Delete</span>
-      <span className="ui:text-xs">Cannot be undone</span>
-    </div>
-  }
+  tooltip={{ content: "Delete", position: "left" }}
   onClick={handleDelete}
 />
 
-// Custom styling
+// With custom tooltip content and position
+<IconButton
+  icon={<Trash size={18} />}
+  tooltip={{
+    content: (
+      <div className="ui:flex ui:flex-col">
+        <span className="ui:font-bold">Delete</span>
+        <span className="ui:text-xs">Cannot be undone</span>
+      </div>
+    ),
+    position: "down",
+  }}
+  onClick={handleDelete}
+/>
+
+// With custom tooltip styling
+<IconButton
+  icon={<Settings size={20} />}
+  tooltip={{
+    content: "Settings",
+    position: "right",
+    className: "ui:font-bold ui:text-lg",
+  }}
+  onClick={handleSettings}
+/>
+
+// Custom button styling
 <IconButton
   icon={<Settings size={24} />}
   className="ui:text-primary ui:hover:bg-primary ui:hover:text-primary-content"
@@ -901,7 +922,9 @@ import { Settings, Trash, Edit } from "lucide-react";
 
 **IconButton Props:**
 - `icon: ReactNode` - Icon element to display (required)
-- `tooltip?: ReactNode` - Tooltip content (shown on hover/focus)
+- `tooltip?: ReactNode | TooltipProps` - Tooltip content or configuration object (shown on hover/focus)
+  - Simple: Pass a string or ReactNode directly
+  - Advanced: Pass `{ content, position?, className? }` for full control
 - `className?: ClassValue` - Additional CSS classes
 - All standard HTML button props are supported
 
