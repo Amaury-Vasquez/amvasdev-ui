@@ -104,7 +104,7 @@ const Select = ({
         {isOpen ? (
           <div
             className={clsx(
-              "ui:absolute ui:flex ui:flex-col ui:w-full ui:rounded-lg ui:shadow-lg ui:left-0 ui:border ui:border-solid ui:border-base-200",
+              "ui:absolute ui:flex ui:flex-col ui:w-full ui:rounded-lg ui:shadow-lg ui:left-0 ui:border ui:border-solid ui:border-base-200 ui:z-50",
               {
                 "ui:top-8": size === "xs",
                 "ui:top-9": size === "sm",
