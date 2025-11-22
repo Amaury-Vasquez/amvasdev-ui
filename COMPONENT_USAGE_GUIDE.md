@@ -528,25 +528,70 @@ import { Checkbox } from "amvasdev-ui";
 
 ### Tooltip
 
-The Tooltip component displays positioned tooltip content. It's typically used internally by other components like IconButton, but can be used standalone.
+The Tooltip component displays positioned tooltip content around a trigger element. It supports four positions: top, down, left, and right.
 
 ```jsx
 import { Tooltip } from "amvasdev-ui";
 
-// Basic usage (renders absolutely positioned tooltip)
-<Tooltip content="This is a helpful tooltip" />
+// Basic usage - renders absolutely positioned within a relative container
+<span className="ui:relative">
+  Hover me
+  <Tooltip content="This is a helpful tooltip" position="top" />
+</span>
+
+// All positions
+<span className="ui:relative">
+  Top
+  <Tooltip content="Top tooltip" position="top" />
+</span>
+
+<span className="ui:relative">
+  Down
+  <Tooltip content="Down tooltip" position="down" />
+</span>
+
+<span className="ui:relative">
+  Left
+  <Tooltip content="Left tooltip" position="left" />
+</span>
+
+<span className="ui:relative">
+  Right
+  <Tooltip content="Right tooltip" position="right" />
+</span>
 
 // With custom content
-<Tooltip
-  content={
-    <div className="ui:flex ui:items-center ui:gap-2">
-      <span>Custom tooltip</span>
-    </div>
-  }
-/>
+<span className="ui:relative">
+  Info
+  <Tooltip
+    position="top"
+    content={
+      <div className="ui:flex ui:items-center ui:gap-2">
+        <span className="ui:font-bold">Custom tooltip</span>
+      </div>
+    }
+  />
+</span>
+
+// Custom styling
+<span className="ui:relative">
+  Example
+  <Tooltip
+    content="Styled tooltip"
+    position="down"
+    className="ui:font-bold ui:text-lg"
+  />
+</span>
 ```
 
-**Note:** The Tooltip component is rendered absolutely positioned and is commonly used within components that manage hover/focus state. For buttons with tooltips, use the IconButton component's `tooltip` prop.
+**Available positions:** `top`, `down`, `left`, `right`
+
+**Tooltip Props:**
+- `content: ReactNode` - Tooltip content (required)
+- `position?: TooltipPosition` - Tooltip position (default: "top")
+- `className?: string` - Additional CSS classes
+
+**Note:** The Tooltip component must be placed inside a container with `ui:relative` positioning. It's commonly used within components that manage hover/focus state. For buttons with tooltips, use the IconButton component's `tooltip` prop.
 
 ### Dropdown
 
