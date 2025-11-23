@@ -1229,6 +1229,79 @@ function ResponsiveComponent() {
 }
 ```
 
+### useBreakpoint
+
+Hook for checking if the viewport matches a media query breakpoint range. Useful for responsive designs and conditional rendering based on screen size.
+
+```jsx
+import { useBreakpoint } from "amvasdev-ui";
+
+function ResponsiveComponent() {
+  // Check if viewport is at least 768px wide (tablet and up)
+  const isTablet = useBreakpoint({ min: 768 });
+
+  // Check if viewport is less than 640px (mobile only)
+  const isMobile = useBreakpoint({ max: 640 });
+
+  // Check if viewport is between 768px and 1024px (tablet range)
+  const isTabletOnly = useBreakpoint({ min: 768, max: 1024 });
+
+  return (
+    <div>
+      {isMobile && <MobileNav />}
+      {isTablet && !isMobile && <TabletNav />}
+      {!isTablet && <DesktopNav />}
+    </div>
+  );
+}
+
+// Common breakpoint patterns
+function BreakpointExamples() {
+  // Mobile-first approach
+  const isSmall = useBreakpoint({ max: 640 }); // sm breakpoint
+  const isMedium = useBreakpoint({ min: 640, max: 768 }); // md breakpoint
+  const isLarge = useBreakpoint({ min: 768, max: 1024 }); // lg breakpoint
+  const isExtraLarge = useBreakpoint({ min: 1024 }); // xl breakpoint
+
+  return (
+    <div>
+      {isSmall && <p>Small screen</p>}
+      {isMedium && <p>Medium screen</p>}
+      {isLarge && <p>Large screen</p>}
+      {isExtraLarge && <p>Extra large screen</p>}
+    </div>
+  );
+}
+
+// Conditional component rendering
+function AdaptiveLayout() {
+  const showSidebar = useBreakpoint({ min: 1024 });
+
+  return (
+    <div className="ui:flex">
+      {showSidebar && <Sidebar />}
+      <MainContent />
+    </div>
+  );
+}
+```
+
+**Parameters:**
+
+- `options: { min?: number; max?: number }` - Breakpoint configuration object
+  - `min` - Minimum viewport width in pixels (inclusive)
+  - `max` - Maximum viewport width in pixels (exclusive, actual max is `max - 1`)
+  - At least one of `min` or `max` must be provided
+
+**Returns:** `boolean` - `true` if the viewport matches the breakpoint range, `false` otherwise
+
+**Notes:**
+
+- The hook automatically updates when the viewport is resized
+- The `max` value is exclusive (e.g., `max: 640` matches viewports up to 639px)
+- Uses `window.matchMedia` for efficient media query matching
+- Event listeners are automatically cleaned up on unmount
+
 ## Utilities
 
 ### Button Utilities

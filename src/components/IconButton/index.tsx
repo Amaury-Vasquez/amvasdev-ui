@@ -43,6 +43,10 @@ const IconButton = ({
       onMouseLeave={onMouseLeave}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
+      onClick={(e) => {
+        props.onClick?.(e);
+        onMouseLeave();
+      }}
       {...props}
     >
       {icon}

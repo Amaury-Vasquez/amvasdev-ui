@@ -1,3 +1,4 @@
+export { default as useBreakpoint } from "./useBreakpoint";
 export { default as useClosableContainer } from "./useClosableContainer";
 export { default as useThemeChange } from "./useThemeChange";
 export { default as useEventListener } from "./useEventListener";
