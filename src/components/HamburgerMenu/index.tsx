@@ -6,7 +6,8 @@ import Menu from "../Dropdown/Menu";
 
 export type HamburgerMenuPosition = "right" | "left";
 
-export interface HamburgerMenuProps extends Omit<HTMLProps<HTMLDivElement>, "className"> {
+export interface HamburgerMenuProps
+  extends Omit<HTMLProps<HTMLDivElement>, "className"> {
   className?: ClassValue;
   icon: LucideIcon;
   children: ReactNode;
@@ -16,6 +17,9 @@ export interface HamburgerMenuProps extends Omit<HTMLProps<HTMLDivElement>, "cla
   menuClassName?: string;
   iconButtonClassName?: ClassValue;
   iconSize?: number;
+  buttonId?: string;
+  buttonAriaLabel?: string;
+  iconClassName?: string;
 }
 
 /**
@@ -39,10 +43,13 @@ const HamburgerMenu = ({
   menuClassName,
   iconButtonClassName,
   iconSize = 20,
+  buttonId,
+  buttonAriaLabel,
+  iconClassName,
   ...props
 }: HamburgerMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const handleIconButtonClick = () => {
     setIsOpen(!isOpen);
   };
@@ -51,8 +58,10 @@ const HamburgerMenu = ({
     <div className={clsx("ui:relative ui:w-fit", className)} {...props}>
       <IconButton
         className={iconButtonClassName}
-        icon={<Icon size={iconSize} />}
+        icon={<Icon size={iconSize} className={iconClassName} />}
         onClick={handleIconButtonClick}
+        id={buttonId}
+        aria-label={buttonAriaLabel}
       />
       {isOpen ? (
         <Menu
