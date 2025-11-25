@@ -34,5 +34,7 @@ interface InputClassParams {
 export function getInputClasses({ variant, size, bordered }: InputClassParams) {
   return clsx("ui:input", getInputVariant(variant), getInputSize(size), {
     "ui:input-bordered": bordered,
+    // This avoids strange behaviors on safari due to small font size
+    "ui:text-base": size === "sm" || size === "md",
   });
 }
