@@ -1,5 +1,5 @@
 import clsx, { ClassValue } from "clsx";
-import { useRef } from "react";
+import { ReactNode, useRef } from "react";
 import { useOnClickOutside, useToggle } from "../../hooks";
 import ErrorLabel from "../ErrorLabel";
 
@@ -9,6 +9,7 @@ export type SelectSize = (typeof SELECT_SIZES)[number];
 export interface SelectOption {
   id: string;
   text: string;
+  customContent?: ReactNode;
 }
 
 export interface SelectProps {
@@ -136,7 +137,7 @@ const Select = ({
                 )}
                 type="button"
               >
-                {option.text}
+                {option.customContent ?? option.text}
               </button>
             ))}
           </div>
